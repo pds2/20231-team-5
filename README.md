@@ -1,7 +1,7 @@
 [Colocar user stories aqui]
 
 \
-victor (bola) -> ai_service,
+victor (bola) -> ai_service\
 wesley -> ??\
 lucas -> ??\
 eduardo -> ??
