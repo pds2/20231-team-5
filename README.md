@@ -2,7 +2,7 @@ Como jogador, quero que o modelo de linguagem gere perguntas desafiadoras e inte
 
 Como jogador, quero que o modelo de linguagem avalie minhas respostas de forma justa e precisa para que eu possa saber como estou me saindo no jogo.
 
-Como jogador, quero poder jogar com meus amigos em modo multiplayer para que possamos competir e nos divertir juntos.\
+Como jogador, quero poder jogar com meus amigos em modo multiplayer para que possamos competir e nos divertir juntos.
 
 Como jogador, quero que o jogo tenha várias rodadas para que eu tenha várias chances de responder perguntas e ganhar pontos.
 
