@@ -8,9 +8,10 @@ SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g -Wall -O3 -std=c++20
 INC := -I include/ -I third_party/
+LIBS := -lcurl
 
 $(TARGET): $(OBJECTS)
-	$(CC) $^ -o $(TARGET)
+	$(CC) $^ -o $(TARGET) $(LIBS)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(@D)
