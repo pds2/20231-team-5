@@ -39,11 +39,13 @@
 
 #ifndef CURL_STATICLIB
 #include <curl/curl.h>
+// #include "../curl/include/curl/curl.h"
 #else 
 #include "curl/curl.h"
 #endif
 
-#include <nlohmann/json.hpp>  // nlohmann/json
+// #include <nlohmann/json.hpp>  // nlohmann/json
+#include "nlohmann/json.hpp"  // nlohmann/json
 
 namespace openai {
 
