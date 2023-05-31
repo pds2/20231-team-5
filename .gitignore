@@ -2,3 +2,4 @@ src/main.cpp
 build/*
 main
 .vscode/*
+api_key.txt
