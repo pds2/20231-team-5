@@ -1,18 +1,33 @@
 #include <iostream>
 #include "../include/common/services/ai_service.h"
 
+#include <fstream>
+#include <string>
+
 AIService::AIService(string base_prompt) {
     this->base_prompt = base_prompt;
-    this-> history = vector<string>();
-    this-> api_key = "";
-    this-> model = "gpt-3.5-turbo";
+    this->history = vector<string>();
+
+    this->api_key = AIService::extractApiKey();
+    this->model = "gpt-3.5-turbo";
     // this-> model = "text-davinci-003";
-    this-> max_tokens = "100";
-    this-> temperature = "0";
+    this->max_tokens = "100";
+    this->temperature = "0";
 
-    openai::start(this->api_key); 
-
+    openai::start(this->api_key);
     AIService::restartChat();
+}
+
+string AIService::extractApiKey(){
+    std::ifstream api_key_file("api_key.txt");
+    string api_key;
+    if (api_key_file.is_open()) {
+        std::getline(api_key_file, api_key);
+        api_key_file.close();
+    } else {
+        throw CouldNotRetrieveApiKey();
+    }
+    return api_key;
 }
 
 string AIService::createMessage(string prompt) {

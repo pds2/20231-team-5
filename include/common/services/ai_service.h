@@ -8,6 +8,8 @@
 using namespace std;
 using Json = nlohmann::json;
 
+class CouldNotRetrieveApiKey{};
+
 class AIService {
     private:
         string base_prompt;
@@ -18,6 +20,7 @@ class AIService {
         string max_tokens;
         string temperature;
         
+        string extractApiKey();
         string createMessage(string prompt);
         string historyToString();
         Json createApiRequest(string message);
