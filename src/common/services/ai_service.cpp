@@ -70,7 +70,7 @@ void AIService::restartChat() {
     string history_string = historyToString();
 
     Json api_request = AIService::createApiRequest(history_string);
-    auto response = openai::chat().create(api_request);
+    Json response = openai::chat().create(api_request);
 }
 
 string AIService::chat(string prompt) {
@@ -78,14 +78,14 @@ string AIService::chat(string prompt) {
     string history_string = historyToString();
     
     Json api_request = AIService::createApiRequest(history_string);
-    auto response = openai::chat().create(api_request);
+    Json response = openai::chat().create(api_request);
 
     return AIService::extractMessage(response);
 }
 
 string AIService::singlePrompt(string prompt) {
     Json api_request = AIService::createApiRequest(AIService::createMessage(prompt));
-    auto response = openai::chat().create(api_request);
+    Json response = openai::chat().create(api_request);
 
     return AIService::extractMessage(response);
 }

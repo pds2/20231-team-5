@@ -23,6 +23,7 @@ class AIService {
         string extractApiKey();
         string createMessage(string prompt);
         string historyToString();
+
         Json createApiRequest(string message);
         string extractMessage(Json response);
     
