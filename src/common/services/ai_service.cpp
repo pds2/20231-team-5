@@ -4,7 +4,7 @@
 AIService::AIService(string base_prompt) {
     this->base_prompt = base_prompt;
     this-> history = vector<string>();
-    this-> api_key = "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"; // Victoria
+    this-> api_key = "";
     this-> model = "gpt-3.5-turbo";
     // this-> model = "text-davinci-003";
     this-> max_tokens = "100";
