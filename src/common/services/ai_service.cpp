@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../include/common/ai/ai_service.h"
+#include "../include/common/services/ai_service.h"
 
 AIService::AIService(string base_prompt) {
     this->base_prompt = base_prompt;
