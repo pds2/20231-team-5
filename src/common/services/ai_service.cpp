@@ -1,4 +1,5 @@
 #include <iostream>
+#include <regex>
 #include "../include/common/services/ai_service.h"
 
 #include <fstream>
@@ -8,14 +9,14 @@ AIService::AIService(string base_prompt) {
     this->base_prompt = base_prompt;
     this->history = vector<string>();
 
-    this->api_key = AIService::extractApiKey();
-    this->model = "gpt-3.5-turbo";
-    // this-> model = "text-davinci-003";
+    this->api_key = this->extractApiKey();
+    this->model = "text-davinci-003";
     this->max_tokens = "100";
-    this->temperature = "0";
+    this->temperature = "0.5";
+    this->nb_tries = 5;
 
     openai::start(this->api_key);
-    AIService::restartChat();
+    this->restartChat();
 }
 
 string AIService::extractApiKey(){
@@ -25,32 +26,57 @@ string AIService::extractApiKey(){
         std::getline(api_key_file, api_key);
         api_key_file.close();
     } else {
-        throw CouldNotRetrieveApiKey();
+        throw CouldNotRetrieveApiKeyException();
     }
     return api_key;
 }
 
-string AIService::createMessage(string prompt) {
-    return "{\"role\":\"user\", \"content\":\"" + prompt + "\"}";
+string AIService::clean(string str) {
+    size_t start = str.find_first_not_of(" ");
+    if (start != string::npos) {
+        str = str.substr(start);
+    } else {
+        str = "";
+    }
+
+    size_t end = str.find_last_not_of(" ");
+    if (end != string::npos) {
+        str = str.substr(0, end + 1);
+    } else {
+        str = "";
+    }
+
+    str = regex_replace(str, regex("\n"), "");
+    return str;
+}
+
+string AIService::formatPrompt(string prompt) {
+    return "\"" + prompt + "\"";
 }
 
 string AIService::historyToString() {
-    string historyString = "[";
+    string historyString = "";
     for (int i = 0; i < history.size(); i++) {
-        historyString += createMessage(history[i]);
-        if (i != history.size() - 1) {
-            historyString += ",";
+        string phrase = this->clean(history[i]);
+        historyString +=phrase;
+        
+        if (!phrase.empty() && i==history.size() - 1) {
+            historyString += ".";
+            continue;
+        }
+
+        if (!phrase.empty()) {
+            historyString+= ". ";
         }
     }
-    historyString += "]";
-    return historyString;
+    return this->formatPrompt(historyString);
 }
 
 Json AIService::createApiRequest(string message) {
     string config_string = R"(
     {
         "model": ")" + this->model + R"(",
-        "messages": )" + message + R"(,
+        "prompt": )" + message + R"(,
         "max_tokens": )" + this->max_tokens + R"(,
         "temperature": )" + this->temperature + R"(
     }
@@ -59,8 +85,22 @@ Json AIService::createApiRequest(string message) {
     return api_request;
 }
 
+Json AIService::sendApiRequest(Json api_request) {
+    for(int i = 0; i < this->nb_tries; i++){
+        try{
+            Json response = openai::completion().create(api_request);
+            return response;
+
+        }catch (std::runtime_error& e){
+            // Tenta denovo
+        }
+    }
+    throw ModelOverloadedException();
+}
+
 string AIService::extractMessage(Json response){
-    string message = response.at("choices")[0].at("message").at("content");
+    string message = response.at("choices")[0].at("text");
+    message = this->clean(message);
     return message;
 }
 
@@ -68,24 +108,21 @@ void AIService::restartChat() {
     this-> history = vector<string>();
     history.push_back(base_prompt);
     string history_string = historyToString();
-
-    Json api_request = AIService::createApiRequest(history_string);
-    Json response = openai::chat().create(api_request);
 }
 
 string AIService::chat(string prompt) {
     this->history.push_back(prompt);
     string history_string = historyToString();
     
-    Json api_request = AIService::createApiRequest(history_string);
-    Json response = openai::chat().create(api_request);
+    Json api_request = this->createApiRequest(history_string);
+    Json response = this->sendApiRequest(api_request);
 
-    return AIService::extractMessage(response);
+    return this->extractMessage(response);
 }
 
 string AIService::singlePrompt(string prompt) {
-    Json api_request = AIService::createApiRequest(AIService::createMessage(prompt));
-    Json response = openai::chat().create(api_request);
+    Json api_request = this->createApiRequest(this->formatPrompt(prompt));
+    Json response = this->sendApiRequest(api_request);
 
-    return AIService::extractMessage(response);
+    return this->extractMessage(response);
 }

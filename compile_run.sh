@@ -1,0 +1,1 @@
+make clean; make;echo -e "\n"; ./main

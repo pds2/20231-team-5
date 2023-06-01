@@ -8,8 +8,31 @@
 using namespace std;
 using Json = nlohmann::json;
 
-class CouldNotRetrieveApiKey{};
+/**
+ * @brief Exceção lançada quando a chave de API para o serviço OpenAI não pôde ser recuperada.
+ */
+class CouldNotRetrieveApiKeyException : exception {
+    public:
+        virtual const char* what() const throw() {
+            return "Não foi possível recuperar a chave de API!";
+        }
+};
 
+/**
+ * @brief Exceção lançada quando o modelo OpenAI está sobrecarregado e não pode processar mais solicitações.
+ */
+
+class ModelOverloadedException : exception {
+    public:
+        virtual const char* what() const throw() {
+            return "O modelo utilizado está sobrecarregado!";
+        }
+};
+
+/**
+ * @brief A classe AIService é responsável por fornecer serviços de inteligência artificial para fins genéricos. 
+ * Ela utiliza a biblioteca OpenAI para gerar respostas para os prompts fornecidos pelo usuário.
+ */
 class AIService {
     private:
         string base_prompt;
@@ -19,41 +42,41 @@ class AIService {
         string model;
         string max_tokens;
         string temperature;
+        unsigned int nb_tries;
         
+        string clean(string str);
+
         string extractApiKey();
-        string createMessage(string prompt);
+        string formatPrompt(string prompt);
         string historyToString();
 
         Json createApiRequest(string message);
+        Json sendApiRequest(Json api_request);
         string extractMessage(Json response);
     
     public:
         /**
-         * Construtor para a classe AIService.
-         * 
-         * @param base_prompt O prompt base para iniciar o chat.
+         * @brief Constrói um novo objeto AIService.
+         * @param base_prompt O prompt inicial para o serviço de IA.
          */
         AIService(string base_prompt);
 
         /**
-         * Reinicia o chat com o prompt base.
-         * 
+         * @brief Reinicia o histórico de conversação do serviço de IA.
          */
         void restartChat();
 
         /**
-         * Continua o chat com o prompt fornecido.
-         * 
-         * @param prompt O prompt para continuar o chat.
-         * @return A resposta do modelo de IA.
+         * @brief Obtém uma resposta do serviço de IA considerando a conversa toda.
+         * @param prompt O prompt para o serviço de IA.
+         * @return A resposta do serviço de IA.
          */
         string chat(string prompt);
 
         /**
-         * Envia um único prompt para o modelo de IA e retorna a resposta.
-         * 
-         * @param prompt O prompt para enviar ao modelo de IA.
-         * @return A resposta do modelo de IA.
+         * @brief Obtém uma resposta do serviço de IA.
+         * @param prompt O prompt para o serviço de IA.
+         * @return A resposta do serviço de IA.
          */
         string singlePrompt(string prompt);
     };        
