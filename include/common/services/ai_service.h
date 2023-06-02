@@ -1,3 +1,7 @@
+/**
+ * @file ai_service.h
+ * @brief Este arquivo contém a declaração da classe AIService, que é responsável por fornecer serviços de inteligência artificial para fins genéricos.
+*/
 #ifndef AI_SERVICE
 #define AI_SERVICE
 
@@ -57,7 +61,6 @@ class AIService {
     public:
         /**
          * @brief Constrói um novo objeto AIService.
-         * 
          * @param base_prompt O prompt inicial para o serviço de IA.
          * @throws CouldNotRetrieveApiKeyException Se a chave de API não puder ser recuperada.
          */
@@ -70,7 +73,6 @@ class AIService {
 
         /**
          * @brief Obtém uma resposta do serviço de IA considerando a conversa toda.
-         * 
          * @param prompt O prompt para o serviço de IA.
          * @throws ModelOverloadedException Se o modelo estiver sobrecarregado.
          * @return A resposta do serviço de IA.
@@ -79,7 +81,6 @@ class AIService {
 
         /**
          * @brief Obtém uma resposta do serviço de IA.
-         * 
          * @param prompt O prompt para o serviço de IA.
          * @throws ModelOverloadedException Se o modelo estiver sobrecarregado.
          * @return A resposta do serviço de IA.

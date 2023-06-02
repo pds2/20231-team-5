@@ -1,3 +1,8 @@
+/**
+ * @file player_service.h
+ * @brief Este arquivo contém a declaração da classe PlayerService, que é responsável por gerenciar os jogadores do jogo.
+ */
+
 #ifndef PLAYER_SERVICE
 #define PLAYER_SERVICE
 
@@ -34,14 +39,12 @@ class PlayerService{
 
         /**
          * @brief Adiciona um novo jogador ao vetor de jogadores.
-         * 
          * @param name Nome do jogador a ser adicionado.
          */
         void addPlayer(string name);
 
         /**
          * @brief Retorna o jogador com o id especificado.
-         * 
          * @param id Id do jogador a ser retornado.
          * @return Player& Referência para o jogador com o id especificado.
          */
@@ -49,7 +52,6 @@ class PlayerService{
 
         /**
          * @brief Retorna o jogador atual.
-         * 
          * @throws NoPlayersException Exceção lançada quando não há jogadores cadastrados.
          * @return Player& Referência para o jogador atual.
          */
@@ -60,7 +62,6 @@ class PlayerService{
          * Por padrão o jogador atual será o próximo da lista. Caso o jogador atual seja o último da lista, 
          * o primeiro jogador da lista será o novo jogador atual.
          * Essa classe pode ser sobrescrita para implementar um comportamento diferente do padrão.
-         * 
          * @throws NoPlayersException Exceção lançada quando não há jogadores cadastrados.
          */
         virtual void changeCurrentPlayer();
