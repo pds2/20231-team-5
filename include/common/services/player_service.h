@@ -20,7 +20,6 @@ class NoPlayersException : public exception {
 
 /**
  * @brief Classe responsável por gerenciar os jogadores do jogo.
- * 
  */
 class PlayerService{
     private:
@@ -30,7 +29,6 @@ class PlayerService{
     public:
         /**
          * @brief Construtor da classe PlayerService.
-         * 
          */
         PlayerService();
 
@@ -52,6 +50,7 @@ class PlayerService{
         /**
          * @brief Retorna o jogador atual.
          * 
+         * @throws NoPlayersException Exceção lançada quando não há jogadores cadastrados.
          * @return Player& Referência para o jogador atual.
          */
         Player& getCurrentPlayer();
@@ -61,6 +60,8 @@ class PlayerService{
          * Por padrão o jogador atual será o próximo da lista. Caso o jogador atual seja o último da lista, 
          * o primeiro jogador da lista será o novo jogador atual.
          * Essa classe pode ser sobrescrita para implementar um comportamento diferente do padrão.
+         * 
+         * @throws NoPlayersException Exceção lançada quando não há jogadores cadastrados.
          */
         virtual void changeCurrentPlayer();
 };

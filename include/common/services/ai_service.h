@@ -57,7 +57,9 @@ class AIService {
     public:
         /**
          * @brief Constrói um novo objeto AIService.
+         * 
          * @param base_prompt O prompt inicial para o serviço de IA.
+         * @throws CouldNotRetrieveApiKeyException Se a chave de API não puder ser recuperada.
          */
         AIService(string base_prompt);
 
@@ -68,14 +70,18 @@ class AIService {
 
         /**
          * @brief Obtém uma resposta do serviço de IA considerando a conversa toda.
+         * 
          * @param prompt O prompt para o serviço de IA.
+         * @throws ModelOverloadedException Se o modelo estiver sobrecarregado.
          * @return A resposta do serviço de IA.
          */
         string chat(string prompt);
 
         /**
          * @brief Obtém uma resposta do serviço de IA.
+         * 
          * @param prompt O prompt para o serviço de IA.
+         * @throws ModelOverloadedException Se o modelo estiver sobrecarregado.
          * @return A resposta do serviço de IA.
          */
         string singlePrompt(string prompt);
