@@ -49,8 +49,8 @@ class ScoreboardService {
         /**
          * @brief Obtém a pontuação de um jogador no placar.
          * @param player_id O ID do jogador cuja pontuação será recuperada.
-         * @return A pontuação do jogador.
          * @throws PlayerDoesNotExistException se o jogador não existir no placar.
+         * @return A pontuação do jogador.
          */
         double getScore(unsigned int player_id);
         

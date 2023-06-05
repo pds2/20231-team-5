@@ -24,6 +24,17 @@ class NoPlayersException : public exception {
 };
 
 /**
+ * @brief Classe de exceção lançada quando o id especificado não corresponde a nenhum jogador.
+ * 
+ */
+class InvalidPlayerException : public exception {
+    public:
+        virtual const char* what() const throw() {
+            return "Jogador inválido!";
+        }
+};
+
+/**
  * @brief Classe responsável por gerenciar os jogadores do jogo.
  */
 class PlayerService{
@@ -46,9 +57,16 @@ class PlayerService{
         /**
          * @brief Retorna o jogador com o id especificado.
          * @param id Id do jogador a ser retornado.
+         * @throws InvalidPlayerException Exceção lançada quando o id especificado não corresponde a nenhum jogador.
          * @return Player& Referência para o jogador com o id especificado.
          */
         Player& getPlayer(unsigned int id);
+
+        /**
+         * @brief Retorna o vetor de jogadores.
+         * @return vector<Player*> Vetor de jogadores.
+         */
+        vector<Player*> getPlayers();
 
         /**
          * @brief Retorna o jogador atual.

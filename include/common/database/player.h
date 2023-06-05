@@ -20,7 +20,8 @@ class Player{
 
     public :
         /**
-         * @brief Constrói um novo objeto Player.
+         * @brief Constrói um novo objeto Player. NÃO DEVE SER USADO DIRETAMENTE, caso queira
+         * construir um novo jogador use o metodo addPlayer da classe PlayerService.
          * @param id O ID do jogador.
          * @param name O nome do jogador.
          */

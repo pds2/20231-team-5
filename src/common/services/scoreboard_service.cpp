@@ -1,8 +1,14 @@
 #include "../include/common/services/scoreboard_service.h"
 #include <algorithm>
+#include <iostream>
+
+using namespace std;
 
 ScoreboardService::ScoreboardService(vector<Player*> players) {
     for (Player* player : players) {
+        if(player == nullptr){
+            throw PlayerDoesNotExistException();
+        }
         scoreboard[player->getId()] = 0.0;
     }
 }
@@ -28,22 +34,28 @@ bool ScoreboardService::compareInts(int a, int b) {
 }
 
 vector<unsigned int> ScoreboardService::getRanking() {
-    vector<double> scores = vector<double>(scoreboard.size());
+    vector<double> scores = vector<double>();
     for (pair<unsigned int, double> player_score : scoreboard) {
         double score = player_score.second;
         scores.push_back(score);
     }
     sort(scores.begin(), scores.end(), compareInts); // Ordena em ordem decrescente
 
-    vector<unsigned int> ranking = vector<unsigned int>(scoreboard.size());
+    vector<unsigned int> ranking = vector<unsigned int>();
     for (double score : scores) {
         for (pair<unsigned int, double> player_score : scoreboard) {
+            unsigned int player_id = player_score.first;
+            
+            auto it = std::find(ranking.begin(), ranking.end(), player_id);
+            if (it != ranking.end()) { // Jogador ja existe em ranking
+                continue; 
+            }
+
             if (player_score.second == score) {
-                ranking.push_back(player_score.first);
+                ranking.push_back(player_id);
             }
         }
     }
-    
     return ranking;
 }
 
