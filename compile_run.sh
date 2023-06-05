@@ -1,1 +1,1 @@
-make clean; make;echo -e "\n"; ./main
+clear; make clean; make;echo -e "\n"; ./main
