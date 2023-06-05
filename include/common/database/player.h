@@ -11,6 +11,16 @@
 using namespace std;
 
 /**
+ * @brief Exceção lançada quando o nome do jogador é inválido (com mais de 15 caracteres).
+ */
+class InvalidNameException : public exception {
+    public:
+        virtual const char* what() const throw() {
+            return "Nome inválido";
+        }
+};
+
+/**
  * @brief A classe Player representa um jogador no jogo.
  */
 class Player{

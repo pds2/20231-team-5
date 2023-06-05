@@ -8,6 +8,14 @@ PlayerService::PlayerService() {
 }
 
 void PlayerService::addPlayer(string name) {
+    if(name.empty()) {
+        throw InvalidPlayerException();
+    }
+
+    if(this->players.size() == this->getMaxPlayerNb()) {
+        throw PlayerOverloadException();
+    }
+
     unsigned int id = 0;
     if (!this->players.empty()) {  // Não vazio
         id = this->players.back().getId() + 1;
@@ -47,6 +55,10 @@ vector<Player*> PlayerService::getPlayers() {
     }
 
     return players;
+}
+
+unsigned int PlayerService::getMaxPlayerNb() {
+    return 4;
 }
 
 void PlayerService::changeCurrentPlayer(){

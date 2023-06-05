@@ -3,54 +3,47 @@
 
 #include <string>
 #include <vector>
+#include <map>
 #include "services/scoreboard_service.h"
 #include "services/player_service.h"
 
 using namespace std;
 
-class InvalidScoreboardServiceException : public exception {
+class InvalidArgumentException : public exception {
     public:
         const char* what() const throw() {
-            return "Scoreboard service inválido!";
-        }
-};
-
-class InvalidPlayerServiceException : public exception {
-    public:
-        const char* what() const throw() {
-            return "Player service inválido!";
-        }
-};
-
-class InvalidLineException : public exception {
-    public:
-        const char* what() const throw() {
-            return "Linha inválida!";
+            return "Argumento inválido!";
         }
 };
 
 class View {
     private:
         // Atributos
+        unsigned available_line_nb;
         unsigned int line_nb;
         unsigned int column_nb;
-        vector<string> lines;
+        vector<string> content;
 
         string header;
         ScoreboardService* scoreboard_service;
         PlayerService* player_service;
 
         // Metodos
-
         string clean(string str);
-        vector<string> formatScoreboard();
+
+        string createTopSeparator();
+        string createBottomSeparator();
+        string wrapInBox(string content);
+
+        vector<pair<string, unsigned int>> formatScoreboard();
+        void displayScoreboard();
         
     public:
-        View(ScoreboardService* scoreboard_service, PlayerService* player_service, string header);
+        View(ScoreboardService* scoreboard_service, PlayerService* player_service, string header, unsigned int line_nb);
         ~View();
 
         string getInput();
-        void setLine(unsigned int line, string content);
+        void setContent(string content);
         void display();
 };
 

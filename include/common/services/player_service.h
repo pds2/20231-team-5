@@ -35,6 +35,17 @@ class InvalidPlayerException : public exception {
 };
 
 /**
+ * @brief Classe de exceção lançada quando o número máximo de jogadores é atingido.
+ * 
+ */
+class PlayerOverloadException : public exception {
+    public:
+        virtual const char* what() const throw() {
+            return "Número máximo de jogadores atingido!";
+        }
+};
+
+/**
  * @brief Classe responsável por gerenciar os jogadores do jogo.
  */
 class PlayerService{
@@ -83,6 +94,12 @@ class PlayerService{
          * @throws NoPlayersException Exceção lançada quando não há jogadores cadastrados.
          */
         virtual void changeCurrentPlayer();
+        
+        /**
+         * @brief Retorna o número máximo de jogadores.
+         * @return unsigned int Número máximo de jogadores.
+         */
+        unsigned int getMaxPlayerNb();
 };
 
 #endif

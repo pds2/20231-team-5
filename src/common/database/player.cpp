@@ -2,6 +2,9 @@
 
 Player::Player(unsigned int id, string name){
     this->id = id;
+    if(name.length() > 15){
+        throw InvalidNameException();
+    }
     this->name = name;
 }
 

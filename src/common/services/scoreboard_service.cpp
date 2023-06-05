@@ -13,15 +13,20 @@ ScoreboardService::ScoreboardService(vector<Player*> players) {
     }
 }
 
-void ScoreboardService::changeScore(unsigned int player_id, double delta_score) {
+void ScoreboardService::changeScore(unsigned int player_id, unsigned int delta_score) {
     if (this->scoreboard.find(player_id) == scoreboard.end()) {
         throw PlayerDoesNotExistException();
     }
 
-    scoreboard[player_id] += delta_score;
+    double new_score = scoreboard[player_id] + delta_score;
+    if (new_score < 0 || new_score > 100) {
+        throw InvalidScoreException();
+    }
+
+    scoreboard[player_id] = new_score;
 }
 
-double ScoreboardService::getScore(unsigned int player_id) {
+unsigned int ScoreboardService::getScore(unsigned int player_id) {
     if (this->scoreboard.find(player_id) == scoreboard.end()) {
         throw PlayerDoesNotExistException();
     }

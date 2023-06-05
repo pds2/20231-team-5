@@ -23,11 +23,22 @@ class PlayerDoesNotExistException : public exception {
 };
 
 /**
+ * @brief Exceção lançada quando uma pontuação é inválida.
+ */
+class InvalidScoreException : public exception {
+    public:
+        virtual const char* what() const throw() {
+            return "Pontuação inválida";
+        }
+
+};
+
+/**
  * @brief A classe ScoreboardService é responsável por gerenciar o placar de jogadores em um jogo.
  */
 class ScoreboardService {
     private:
-        map<unsigned int, double> scoreboard; // <player_id, score>
+        map<unsigned int, unsigned int> scoreboard; // <player_id, score>
 
         static bool compareInts(int a, int b);
 
@@ -44,7 +55,7 @@ class ScoreboardService {
          * @param delta_score A quantidade pela qual a pontuação será alterada.
          * @throws PlayerDoesNotExistException se o jogador não existir no placar.
          */
-        void changeScore(unsigned int player_id, double delta_score);
+        void changeScore(unsigned int player_id, unsigned int delta_score);
 
         /**
          * @brief Obtém a pontuação de um jogador no placar.
@@ -52,7 +63,7 @@ class ScoreboardService {
          * @throws PlayerDoesNotExistException se o jogador não existir no placar.
          * @return A pontuação do jogador.
          */
-        double getScore(unsigned int player_id);
+        unsigned int getScore(unsigned int player_id);
         
         /**
          * @brief Obtém o ranking de jogadores no placar.
