@@ -1,0 +1,1 @@
+clear; make clean; make tests;echo -e "\n"; bin/tester
