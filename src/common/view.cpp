@@ -9,7 +9,7 @@ using namespace std;
 
 #include <algorithm>
 
-View::View(ScoreboardService* scoreboard_service, PlayerService* player_service, string header, unsigned int line_nb) : 
+View::View(ScoreboardService* scoreboard_service, PlayerService* player_service, string header) : 
     scoreboard_service(scoreboard_service), player_service(player_service) {
 
     if (scoreboard_service == nullptr) {
@@ -20,11 +20,11 @@ View::View(ScoreboardService* scoreboard_service, PlayerService* player_service,
         throw InvalidArgumentException();
     }
 
-    unsigned int max_content_line_nb = 5;
-    this->available_line_nb = line_nb - player_service->getMaxPlayerNb() - max_content_line_nb;
+    unsigned int line_nb = 20;
+    this->available_line_nb = line_nb - player_service->getMaxPlayerNb() - 5;
 
-    if (line_nb < player_service->getMaxPlayerNb() + 5 + this->available_line_nb) { // 5 = 2 de separador + 1 de header + 2 de scoreboard
-        throw InvalidArgumentException();
+    if(available_line_nb < 0) {
+        throw InvalidStateException();
     }
 
     this->content = vector<string>();
@@ -170,23 +170,40 @@ string View::createBottomSeparator(){
 }
 
 void View::setContent(string content) {
-    this->content = vector<string>();
-
-    if(content.length() <= this->column_nb - 4) { // 4 = 2 de padding + 2 de borda
-        this->content.push_back(content);
-        return;
-    }
     // separa em multiplas linhas
     string line = "";
-    int counter = -1;
+    int counter = 0;
+    int line_nb = 0;
+    int i = -1;
+
     for (char c : content) {
+        i++;
         counter++;
         line += c;
-        if (counter == this->column_nb - 4) {
-            this->content.push_back(line);
+        if (counter == this->column_nb - 4) { // Linha está completa
+            line_nb++;
+            if(line_nb == this->available_line_nb && i < content.length() - 1) { 
+                // é a ultima linha e o conteudo ainda não acabou, truncar com "..."
+                line = line.substr(0, line.length() - 3) + "...";
+                this->content.push_back(line);
+                break;
+            }
+
+            this->content.push_back(line); // Linha cabe inteira, adicionar normalmente
             line = "";
             counter = 0;
+            continue;
         }
+
+        if(i == content.length() - 1) { // Conteúdo acabou sem ultrapassar limite da linha
+            this->content.push_back(line);
+        }
+    }
+
+    // Completa as linhas restantes com strings vazias
+    int remaining_lines = this->available_line_nb - this->content.size();
+    for (int i=0; i< remaining_lines; i++) {
+        this->content.push_back("");
     }
 }
 
@@ -201,8 +218,6 @@ void View::display() {
         cout << left << setw(this->column_nb) << this->wrapInBox(line) << endl;
     }
     cout << this->wrapInBox("") << endl;
-
-    // cout << this-> createBottomSeparator() << endl;
     cout << "|> ";
     string input = this->getInput();
 }
