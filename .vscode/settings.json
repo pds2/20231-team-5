@@ -63,6 +63,11 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "valarray": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "bitset": "cpp",
+        "csignal": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp",
+        "regex": "cpp"
     }
 }

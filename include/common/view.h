@@ -65,6 +65,8 @@ class View {
          * @param scoreboard_service Serviço de placar do qual as informações do placas serão retiradas.
          * @param player_service Serviço de jogador do qual as informações dos jogadores serão retiradas.
          * @param header Cabeçalho customizável a ser exibido na tela, pode ser o nome do jogo.
+         * @throw InvalidArgumentException Caso o serviço de placar ou de jogador seja nulo.
+         * @throw InvalidStateException Caso o número de linhas disponíveis seja menor que 0.
          */
         View(ScoreboardService* scoreboard_service, PlayerService* player_service, string header);
 
@@ -86,6 +88,12 @@ class View {
          * @param content 
          */
         void setContent(string content);
+
+        /**
+        * @brief Retorna o conteúdo customizável a ser exibido na tela.
+        * @return vector<string>
+        */
+        vector<string> getContent();
 
         /**
          * @brief Exibe a interface do jogo na tela, com o nome do jogo, conteúdo customizável e o placar.

@@ -83,3 +83,54 @@ TEST_CASE("Test getRanking"){
 
     destroyTestPlayers(test_players);
 }
+
+TEST_CASE("Test getWinner"){
+    vector<Player*> test_players = getTestPlayers();
+    ScoreboardService scoreboard_service = ScoreboardService(test_players);
+
+    CHECK(scoreboard_service.getWinner() == 0);
+
+    scoreboard_service.changeScore(0, 8.989);
+    scoreboard_service.changeScore(1, 41.9595);
+    scoreboard_service.changeScore(2, 36);
+
+    CHECK(scoreboard_service.getWinner() == 1);
+
+    scoreboard_service.changeScore(0, 10);
+    scoreboard_service.changeScore(1, 30);
+    scoreboard_service.changeScore(2, 20);
+
+    CHECK(scoreboard_service.getWinner() == 1);
+
+    scoreboard_service.changeScore(0, -11.5648);
+    scoreboard_service.changeScore(1, -18);
+    scoreboard_service.changeScore(2, -11.9987);
+
+    CHECK(scoreboard_service.getWinner() == 2);
+
+    destroyTestPlayers(test_players);
+}
+
+TEST_CASE("Test PlayerDoesNotExistException"){
+    vector<Player*> test_players = getTestPlayers();
+    ScoreboardService scoreboard_service = ScoreboardService(test_players);
+
+    CHECK_THROWS_AS(scoreboard_service.changeScore(3, 10), PlayerDoesNotExistException);
+    CHECK_THROWS_AS(scoreboard_service.changeScore(-1, 10), PlayerDoesNotExistException);
+    CHECK_THROWS_AS(scoreboard_service.getScore(3), PlayerDoesNotExistException);
+    CHECK_THROWS_AS(scoreboard_service.getScore(-1), PlayerDoesNotExistException);
+
+    destroyTestPlayers(test_players);
+}
+
+TEST_CASE("Test InvalidScoreException"){
+    vector<Player*> test_players = getTestPlayers();
+    ScoreboardService scoreboard_service = ScoreboardService(test_players);
+
+    CHECK_THROWS_AS(scoreboard_service.changeScore(0, -10), InvalidScoreException);
+    scoreboard_service.changeScore(0, 20);
+    CHECK_THROWS_AS(scoreboard_service.changeScore(0, -21), InvalidScoreException);
+    CHECK_THROWS_AS(scoreboard_service.changeScore(1, 200), InvalidScoreException);
+
+    destroyTestPlayers(test_players);
+}

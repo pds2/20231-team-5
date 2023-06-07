@@ -1,5 +1,6 @@
 src/main.cpp
 build
 bin
+main
 .vscode
 api_key.txt

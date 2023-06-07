@@ -67,5 +67,5 @@ vector<unsigned int> ScoreboardService::getRanking() {
 unsigned int ScoreboardService::getWinner() {
     vector<unsigned int> ranking = this->getRanking();
     unsigned int winner_id = ranking[0];
-    return scoreboard[winner_id];
+    return winner_id;
 }

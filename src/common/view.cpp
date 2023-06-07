@@ -34,8 +34,8 @@ View::View(ScoreboardService* scoreboard_service, PlayerService* player_service,
 }
 
 View::~View() {
-    // this->player_service->~PlayerService();
-    // this->scoreboard_service->~ScoreboardService();
+    // delete this->player_service;
+    // delete this->scoreboard_service;
 }
 
 string View::clean(string str) {
@@ -205,6 +205,10 @@ void View::setContent(string content) {
     for (int i=0; i< remaining_lines; i++) {
         this->content.push_back("");
     }
+}
+
+vector<string> View::getContent() {
+    return this->content;
 }
 
 void View::display() {
