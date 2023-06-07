@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <iomanip>
+
 using namespace std;
 
 #include <algorithm>
@@ -171,6 +172,7 @@ string View::createBottomSeparator(){
 
 void View::setContent(string content) {
     // separa em multiplas linhas
+    this->content = vector<string>();
     string line = "";
     int counter = 0;
     int line_nb = 0;
@@ -202,6 +204,7 @@ void View::setContent(string content) {
 
     // Completa as linhas restantes com strings vazias
     int remaining_lines = this->available_line_nb - this->content.size();
+
     for (int i=0; i< remaining_lines; i++) {
         this->content.push_back("");
     }
