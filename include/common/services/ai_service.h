@@ -70,6 +70,18 @@ class AIService {
          * @brief Reinicia o histórico de conversação do serviço de IA.
          */
         void restartChat();
+        
+        /**
+         * @brief Obtém o histórico de mensagens do usuário que foram enviadas para o serviço de IA.
+         * @return O histórico de mensagens do usuário que foram enviadas para o serviço de IA.
+         */
+        vector<string> getHistory();
+
+        /**
+         * @brief Obtém o prompt base do serviço de IA.
+         * @return O prompt base do serviço de IA.
+         */
+        string getBasePrompt();
 
         /**
          * @brief Obtém uma resposta do serviço de IA considerando a conversa toda.

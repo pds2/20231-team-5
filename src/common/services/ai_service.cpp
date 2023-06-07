@@ -110,6 +110,14 @@ void AIService::restartChat() {
     string history_string = historyToString();
 }
 
+vector<string> AIService::getHistory() {
+    return this->history;
+}
+
+string AIService::getBasePrompt() {
+    return this->base_prompt;
+}
+
 string AIService::chat(string prompt) {
     this->history.push_back(prompt);
     string history_string = historyToString();
