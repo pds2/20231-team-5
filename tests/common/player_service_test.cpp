@@ -57,3 +57,13 @@ TEST_CASE("Test InvalidPlayerException"){
 
     CHECK_THROWS_AS(player_service.getPlayer(3), InvalidPlayerException);
 }
+
+TEST_CASE("Test InvalidNameException"){
+    PlayerService player_service;
+    player_service.addPlayer("Alice");
+    player_service.addPlayer("Bob");
+    player_service.addPlayer("Charlie");
+
+    CHECK_THROWS_AS(player_service.addPlayer("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), InvalidNameException);
+    CHECK_THROWS_AS(player_service.addPlayer("João"), InvalidNameException);
+}

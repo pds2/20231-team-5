@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <cmath>
 #include <iomanip>
+#include <locale>
+#include <codecvt>
 
 using namespace std;
 
@@ -139,7 +141,9 @@ vector<pair<string, unsigned int>> View::formatScoreboard() {
 
 string View::wrapInBox(string content){
     string wrapped_content = "| " + content;
-    int stop_column = this->column_nb - wrapped_content.length();
+    wstring_convert<codecvt_utf8_utf16<wchar_t>> converter;
+
+    int stop_column = this->column_nb - converter.from_bytes(wrapped_content).length();
     for(int i=0; i< stop_column; i++){
         wrapped_content += " ";
     }
@@ -149,8 +153,9 @@ string View::wrapInBox(string content){
 
 string View::createTopSeparator(){
     string first_separator = "+";
+    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
-    double stop_column_d = (this->column_nb - this->header.length()) / 2.0;
+    double stop_column_d = (this->column_nb - converter.from_bytes(this->header).length()) / 2.0;
     int stop_column = ceil(stop_column_d);
     for(int i=0; i< stop_column; i++){
         first_separator += "=";
@@ -261,7 +266,12 @@ void View::setScoreboardService(ScoreboardService* scoreboard_service) {
     }
 
     this->scoreboard_service = scoreboard_service;
-    this->available_line_nb = this->available_line_nb - player_service->getMaxPlayerNb() - 5;
+    int occupied_space = player_service->getPlayers().size();
+    if (occupied_space != 0){
+        // scoreboard_service FOI setado
+        occupied_space +=4;
+    }
+    this->available_line_nb = this->available_line_nb - occupied_space;
 }
 
 vector<string> View::getContent() {
