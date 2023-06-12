@@ -10,25 +10,21 @@ using namespace std;
 
 #include <algorithm>
 
-View::View(ScoreboardService* scoreboard_service, PlayerService* player_service, string header) : 
-    scoreboard_service(scoreboard_service), player_service(player_service) {
-
-    if (scoreboard_service == nullptr) {
-        throw InvalidArgumentException();
-    }
+View::View(PlayerService* player_service, string header) : 
+    scoreboard_service(nullptr), player_service(player_service) {
 
     if (player_service == nullptr) {
         throw InvalidArgumentException();
     }
 
     unsigned int line_nb = 20;
-    this->available_line_nb = line_nb - player_service->getMaxPlayerNb() - 5;
+    this->available_line_nb = line_nb;
 
     if(available_line_nb < 0) {
         throw InvalidStateException();
     }
 
-    this->content = vector<string>();
+    this->initContent();
     this-> line_nb = line_nb;
     this->column_nb = 80;
     this->header = " " + header + " ";
@@ -37,6 +33,11 @@ View::View(ScoreboardService* scoreboard_service, PlayerService* player_service,
 View::~View() {
     // delete this->player_service;
     // delete this->scoreboard_service;
+}
+
+void View::initContent() {
+    this->content = vector<string>();
+    this->completeWithEmptyLines();
 }
 
 string View::clean(string str) {
@@ -58,6 +59,56 @@ string View::clean(string str) {
     transform(str.begin(), str.end(), str.begin(), [](unsigned char c){ return tolower(c); });
 
     return str;
+}
+
+vector<string> View::splitString(string str){
+    vector<string> splitted_string = vector<string>();
+
+    if(str == ""){
+        splitted_string.push_back("");
+        return splitted_string;
+    }
+
+    string line = "";
+    int counter = 0;
+    int line_nb = 0;
+    int i = -1;
+    for (char c : str) {
+        i++;
+        counter++;
+        line += c;
+        if (counter == this->column_nb - 4) { // Linha está completa
+            line_nb++;
+            if(line_nb == this->available_line_nb && i < str.length() - 1) { 
+                // é a ultima linha e o conteudo ainda não acabou, truncar com "..."
+                line = line.substr(0, line.length() - 3) + "...";
+                splitted_string.push_back(line);
+                break;
+            }
+
+            splitted_string.push_back(line); // Linha cabe inteira, adicionar normalmente
+            line = "";
+            counter = 0;
+            continue;
+        }
+
+        if(i == str.length() - 1) { // Conteúdo acabou sem ultrapassar limite da linha
+            splitted_string.push_back(line);
+        }
+    }
+
+    return splitted_string;
+}
+
+void View::completeWithEmptyLines(){
+    // Completa as linhas restantes com strings vazias
+    int remaining_lines = this->available_line_nb - this->content.size();
+
+    if (remaining_lines <= 0){ return; }
+
+    for (int i=0; i< remaining_lines; i++) {
+        this->content.push_back("");
+    }
 }
 
 string View::getInput() {
@@ -117,6 +168,11 @@ string View::createTopSeparator(){
 }
 
 void View::displayScoreboard(){
+    if (this->scoreboard_service == nullptr) {
+        // Não mostrar o placar
+        return;
+    }
+
     string scoreboard_separator = "| ┌";
     for(int i=0; i< 34; i++){
         scoreboard_separator += "─";
@@ -172,42 +228,40 @@ string View::createBottomSeparator(){
 
 void View::setContent(string content) {
     // separa em multiplas linhas
-    this->content = vector<string>();
-    string line = "";
-    int counter = 0;
-    int line_nb = 0;
-    int i = -1;
+    this->content = this->splitString(content);
 
-    for (char c : content) {
-        i++;
-        counter++;
-        line += c;
-        if (counter == this->column_nb - 4) { // Linha está completa
-            line_nb++;
-            if(line_nb == this->available_line_nb && i < content.length() - 1) { 
-                // é a ultima linha e o conteudo ainda não acabou, truncar com "..."
-                line = line.substr(0, line.length() - 3) + "...";
-                this->content.push_back(line);
-                break;
+    this->completeWithEmptyLines();
+}
+
+void View::setContent(vector<string> content) {
+    this->content = vector<string>();
+    for (string line: content){
+        vector<string> splitted_line = this->splitString(line);
+
+        for (string l: splitted_line){
+            if(this->content.size() == this->available_line_nb){
+                throw InvalidStateException();
             }
 
-            this->content.push_back(line); // Linha cabe inteira, adicionar normalmente
-            line = "";
-            counter = 0;
-            continue;
-        }
-
-        if(i == content.length() - 1) { // Conteúdo acabou sem ultrapassar limite da linha
-            this->content.push_back(line);
+            this->content.push_back(l);
         }
     }
 
-    // Completa as linhas restantes com strings vazias
-    int remaining_lines = this->available_line_nb - this->content.size();
+    this->completeWithEmptyLines();
+}
 
-    for (int i=0; i< remaining_lines; i++) {
-        this->content.push_back("");
+void View::setScoreboardService(ScoreboardService* scoreboard_service) {
+    if(scoreboard_service == nullptr) {
+        throw InvalidArgumentException();
     }
+
+    if(this->scoreboard_service != nullptr) {
+        // Já setou o placar
+        throw InvalidStateException();
+    }
+
+    this->scoreboard_service = scoreboard_service;
+    this->available_line_nb = this->available_line_nb - player_service->getMaxPlayerNb() - 5;
 }
 
 vector<string> View::getContent() {

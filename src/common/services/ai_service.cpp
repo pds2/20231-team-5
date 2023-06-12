@@ -148,6 +148,10 @@ string AIService::getBasePrompt()
     return this->base_prompt;
 }
 
+void AIService::setTemperature(string temperature){
+    this->temperature = temperature;
+}
+
 string AIService::chat(string prompt)
 {
     this->history.push_back(prompt);

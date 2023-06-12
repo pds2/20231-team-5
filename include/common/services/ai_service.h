@@ -84,6 +84,13 @@ class AIService {
         string getBasePrompt();
 
         /**
+         * @brief Define a temperatura, a tempetura é um parâmetro que controla a aleatoriedade 
+         * das respostas do serviço de IA.
+         * @param temperature A temperatura.
+         */
+        void setTemperature(string temperature);
+
+        /**
          * @brief Obtém uma resposta do serviço de IA considerando a conversa toda.
          * @param prompt O prompt para o serviço de IA.
          * @throws ModelOverloadedException Se o modelo estiver sobrecarregado.

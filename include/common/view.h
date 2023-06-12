@@ -49,7 +49,11 @@ class View {
         PlayerService* player_service;
 
         // Metodos
-        string clean(string str);
+        void initContent();
+        string clean(string str);   
+
+        vector<string> splitString(string str);
+        void completeWithEmptyLines();
 
         string createTopSeparator();
         string createBottomSeparator();
@@ -62,13 +66,12 @@ class View {
         /**
          * @brief Classe responsável por gerenciar a exibição de informações na tela e na recepção 
          * e tratamento do input do usuário.
-         * @param scoreboard_service Serviço de placar do qual as informações do placas serão retiradas.
          * @param player_service Serviço de jogador do qual as informações dos jogadores serão retiradas.
          * @param header Cabeçalho customizável a ser exibido na tela, pode ser o nome do jogo.
-         * @throw InvalidArgumentException Caso o serviço de placar ou de jogador seja nulo.
+         * @throw InvalidArgumentException Caso o serviço de jogador seja nulo.
          * @throw InvalidStateException Caso o número de linhas disponíveis seja menor que 0.
          */
-        View(ScoreboardService* scoreboard_service, PlayerService* player_service, string header);
+        View(PlayerService* player_service, string header);
 
         /**
          * @brief Destrutor da classe View.
@@ -88,6 +91,22 @@ class View {
          * @param content 
          */
         void setContent(string content);
+
+        /**
+         * @brief Define o conteúdo customizável a ser exibido na tela. Cada string do vetor será exibida em 
+         * uma linha, caso a string não caiba na linha, ela será separada em multiplas linhas.
+         * @param content
+         * @throw InvalidStateException Caso o content ultrapasse o número de linhas disponíveis.
+         */
+        void setContent(vector<string> content);
+
+        /**
+         * @brief Define o serviço de placar a ser utilizado pelo view.
+         * @param scoreboard_service
+         * @throw InvalidArgumentException Caso o serviço de placar seja nulo.
+         * @throw InvalidStateException Caso o placar já tenha sido definido.
+         */
+        void setScoreboardService(ScoreboardService* scoreboard_service);
 
         /**
         * @brief Retorna o conteúdo customizável a ser exibido na tela.
