@@ -116,7 +116,7 @@ void View::completeWithEmptyLines(){
 
 string View::getInput() {
     string input;
-    cin >> input;
+    getline(cin, input);
     input = this->clean(input);
     this->user_message = "";
     return input;
@@ -258,7 +258,7 @@ void View::setContent(vector<string> content) {
 }
 
 void View::setHeader(string header) {
-    this->header = header;
+    this->header = " " + header + " ";
 }
 
 void View::setScoreboardService(ScoreboardService* scoreboard_service) {
