@@ -48,6 +48,8 @@ class View {
         ScoreboardService* scoreboard_service;
         PlayerService* player_service;
 
+        string user_message;
+
         // Metodos
         void initContent();
         string clean(string str);   
@@ -80,9 +82,10 @@ class View {
 
         /**
          * @brief Recebe uma entrada do usuário e a trata.
+         * @param message Mensagem a ser exibida na tela para o usuário.
          * @return string 
          */
-        string getInput();
+        string getInput(string message);
 
         /**
          * @brief Define o conteúdo customizável a ser exibido na tela, ele será separado em diferentes linhas
@@ -101,6 +104,12 @@ class View {
         void setContent(vector<string> content);
 
         /**
+         * @brief Define o cabeçalho customizável a ser exibido na tela, pode ser o nome do jogo.
+         * @param header
+         */
+        void setHeader(string header);
+
+        /**
          * @brief Define o serviço de placar a ser utilizado pelo view.
          * @param scoreboard_service
          * @throw InvalidArgumentException Caso o serviço de placar seja nulo.
@@ -116,8 +125,16 @@ class View {
 
         /**
          * @brief Exibe a interface do jogo na tela, com o nome do jogo, conteúdo customizável e o placar.
+         * @returns string Input do usuário.
          */
-        void display();
+        string display();
+
+        /**
+         * @brief Exibe a interface do jogo na tela, com o nome do jogo, conteúdo customizável e o placar.
+         * @param user_message Mensagem a ser exibida na tela para o usuário no campo de input.
+         * @returns string Input do usuário.
+         */
+        string display(string user_message);
 };
 
 #endif

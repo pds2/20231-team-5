@@ -95,7 +95,7 @@ Json AIService::createApiRequest(string message)
     {
         "model": ")" + this->model +
                            R"(",
-        "prompt": )" + message +
+   "     "prompt": )" + message +
                            R"(,
         "max_tokens": )" + this->max_tokens +
                            R"(,

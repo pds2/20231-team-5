@@ -113,11 +113,12 @@ void View::completeWithEmptyLines(){
     }
 }
 
-string View::getInput() {
-    string message;
-    cin >> message;
-    message = this->clean(message);
-    return message;
+string View::getInput(string message) {
+    string input;
+    cout << message;
+    cin >> input;
+    input = this->clean(input);
+    return input;
 }
 
 vector<pair<string, unsigned int>> View::formatScoreboard() {
@@ -255,6 +256,10 @@ void View::setContent(vector<string> content) {
     this->completeWithEmptyLines();
 }
 
+void View::setHeader(string header) {
+    this->header = header;
+}
+
 void View::setScoreboardService(ScoreboardService* scoreboard_service) {
     if(scoreboard_service == nullptr) {
         throw InvalidArgumentException();
@@ -278,7 +283,7 @@ vector<string> View::getContent() {
     return this->content;
 }
 
-void View::display() {
+string View::display() {
     system("clear");
     cout << this->createTopSeparator() << endl;
     cout << this->wrapInBox("") << endl;
@@ -290,5 +295,11 @@ void View::display() {
     }
     cout << this->wrapInBox("") << endl;
     cout << "|> ";
-    string input = this->getInput();
+    this->user_message = "";
+    return this->getInput(this->user_message);
+}
+
+string View::display(string user_message) {
+    this->user_message = user_message;
+    return this->display();
 }
