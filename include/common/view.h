@@ -82,10 +82,9 @@ class View {
 
         /**
          * @brief Recebe uma entrada do usuário e a trata.
-         * @param message Mensagem a ser exibida na tela para o usuário.
          * @return string 
          */
-        string getInput(string message);
+        string getInput();
 
         /**
          * @brief Define o conteúdo customizável a ser exibido na tela, ele será separado em diferentes linhas

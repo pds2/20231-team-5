@@ -30,6 +30,7 @@ View::View(PlayerService* player_service, string header) :
     this-> line_nb = line_nb;
     this->column_nb = 80;
     this->header = " " + header + " ";
+    this->user_message = "";
 }
 
 View::~View() {
@@ -113,11 +114,11 @@ void View::completeWithEmptyLines(){
     }
 }
 
-string View::getInput(string message) {
+string View::getInput() {
     string input;
-    cout << message;
     cin >> input;
     input = this->clean(input);
+    this->user_message = "";
     return input;
 }
 
@@ -294,9 +295,12 @@ string View::display() {
         cout << left << setw(this->column_nb) << this->wrapInBox(line) << endl;
     }
     cout << this->wrapInBox("") << endl;
-    cout << "|> ";
-    this->user_message = "";
-    return this->getInput(this->user_message);
+
+    if (this->user_message != ""){
+        cout << this->user_message;
+    }
+
+    return this->getInput();
 }
 
 string View::display(string user_message) {
