@@ -66,6 +66,14 @@ class PlayerService{
         void addPlayer(string name);
 
         /**
+         * @brief Remove o jogador com o id especificado.
+         * @param id Id do jogador a ser removido.
+         * @throws NoPlayersException Exceção lançada quando não há jogadores cadastrados.
+         * @throws InvalidPlayerException Exceção lançada quando o id especificado não corresponde a nenhum jogador.
+         */
+        void removePlayer(unsigned int id);
+
+        /**
          * @brief Retorna o jogador com o id especificado.
          * @param id Id do jogador a ser retornado.
          * @throws InvalidPlayerException Exceção lançada quando o id especificado não corresponde a nenhum jogador.

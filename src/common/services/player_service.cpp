@@ -25,6 +25,21 @@ void PlayerService::addPlayer(string name) {
     this->players.push_back(player);
 }
 
+void PlayerService::removePlayer(unsigned int id) {
+    if (this->players.empty()) {
+        throw NoPlayersException();
+    }
+
+    for (unsigned int i = 0; i < this->players.size(); i++) {
+        if (this->players[i].getId() == id) {
+            this->players.erase(this->players.begin() + i);
+            return;
+        }
+    }
+
+    throw InvalidPlayerException();
+}
+
 Player& PlayerService::getPlayer(unsigned int id) {
     if (this->players.empty()) {
         throw NoPlayersException();
