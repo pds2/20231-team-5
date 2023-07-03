@@ -12,6 +12,20 @@ using std::vector;
 
 #include "../database/quizcard.h"
 
+class FileDoesNotOpen : public std::exception{
+  public:
+    const char* what() const throw() {
+        return "Não foi possível abrir o arquivo!";
+    }
+};
+
+class AnswerNotFound : public std::exception{
+  public:
+    const char* what() const throw() {
+        return "Resposta não encontrada!";
+    }
+};
+
 class DataLoader{
 
   public:
