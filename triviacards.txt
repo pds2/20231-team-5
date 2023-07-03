@@ -11,3 +11,16 @@ Pergunta: Qual é o planeta mais próximo do Sol? Resposta: Mercúrio.
 Pergunta: Qual é o processo pelo qual as plantas convertem a energia do sol em energia química para alimentação? Resposta: Fotossíntese.
 Pergunta: Qual é a unidade de medida de distância no Sistema Internacional? Resposta: Metro.
 Pergunta: Quem é considerado o pai da teoria da evolução? Resposta: Charles Darwin.
+
+Tema: Filmes
+
+Pergunta: Qual é o nome do protagonista da trilogia 'O Senhor dos Anéis'? Resposta: Frodo Baggins.
+Pergunta: Em que filme Leonardo DiCaprio interpreta um personagem chamado Cobb, especializado em extrair segredos do subconsciente? Resposta: A Origem (Inception).
+Pergunta: Qual é o nome do vilão principal do filme 'O Cavaleiro das Trevas'? Resposta: Coringa.
+Pergunta: Qual é o nome da princesa da saga 'Star Wars' que é irmã de Luke Skywalker? Resposta: Leia Organa.
+Pergunta: Em que filme Tom Hanks interpreta um comandante de um navio mercante que é sequestrado por piratas somalianos? Resposta: Capitão Phillips (Captain Phillips).
+Pergunta: Qual é o nome do personagem interpretado por Johnny Depp na franquia 'Piratas do Caribe'? Resposta: Jack Sparrow.
+Pergunta: Em que filme Robin Williams interpreta um terapeuta que usa métodos pouco convencionais para ajudar seus pacientes? Resposta: Gênio Indomável (Good Will Hunting).
+Pergunta: Qual é o nome do vilão principal da franquia 'Harry Potter' que tem o objetivo de matar o protagonista? Resposta: Lord Voldemort.
+Pergunta: Qual é o filme de maior bilheteria de todos os tempos? Resposta: Vingadores: Ultimato.
+Pergunta: Qual é o nome do personagem principal do filme "Clube da Luta" que é interpretado por Brad Pitt? Resposta: Tyler Durden
