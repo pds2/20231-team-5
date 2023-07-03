@@ -46,8 +46,6 @@ class View {
 
         string header;
         ScoreboardService* scoreboard_service;
-        PlayerService* player_service;
-
         string user_message;
 
         // Metodos
@@ -63,6 +61,9 @@ class View {
 
         vector<pair<string, unsigned int>> formatScoreboard();
         void displayScoreboard();
+
+    protected:
+        PlayerService* player_service;
         
     public:
         /**
@@ -73,7 +74,7 @@ class View {
          * @throw InvalidArgumentException Caso o serviço de jogador seja nulo.
          * @throw InvalidStateException Caso o número de linhas disponíveis seja menor que 0.
          */
-        View(PlayerService* player_service, string header);
+        View(PlayerService* player_service);
 
         /**
          * @brief Destrutor da classe View.
