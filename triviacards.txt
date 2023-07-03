@@ -24,3 +24,16 @@ Pergunta: Em que filme Robin Williams interpreta um terapeuta que usa métodos p
 Pergunta: Qual é o nome do vilão principal da franquia 'Harry Potter' que tem o objetivo de matar o protagonista? Resposta: Lord Voldemort.
 Pergunta: Qual é o filme de maior bilheteria de todos os tempos? Resposta: Vingadores: Ultimato.
 Pergunta: Qual é o nome do personagem principal do filme "Clube da Luta" que é interpretado por Brad Pitt? Resposta: Tyler Durden
+
+Tema: História mundial
+
+Pergunta: Qual foi o imperador romano que legalizou o cristianismo no Império Romano? Resposta: Constantino.
+Pergunta: Quem foi o líder sul-africano que lutou contra o apartheid e se tornou o primeiro presidente negro do país? Resposta: Nelson Mandela.
+Pergunta: Quem foi o líder político e militar responsável pela descolonização da Índia? Resposta: Mahatma Gandhi.
+Pergunta: Qual foi a capital do Império Romano? Resposta: Roma.
+Pergunta: Qual foi a causa imediata da Primeira Guerra Mundial? Resposta: O assassinato do Arquiduque Franz Ferdinand.
+Pergunta: Quem foi o líder revolucionário russo que liderou a Revolução de Outubro em 1917? Resposta: Vladimir Lenin.
+Pergunta: Qual foi o período histórico caracterizado pelo declínio da economia e da cultura na Europa após a queda do Império Romano do Ocidente? Resposta: Idade Média.
+Pergunta: Qual foi a cidade antiga que se destacou como um importante centro cultural na Grécia Antiga, lar de grandes filósofos como Sócrates, Platão e Aristóteles? Resposta: Atenas.
+Pergunta: Qual foi o tratado que encerrou a Primeira Guerra Mundial? Resposta: Tratado de Versalhes.
+Pergunta: Qual foi a civilização antiga que desenvolveu a escrita cuneiforme e construiu a Torre de Babel? Resposta: Civilização Mesopotâmica.
