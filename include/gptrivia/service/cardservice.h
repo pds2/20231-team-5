@@ -42,6 +42,11 @@ class CardService{
     CardService(AIService* chatGPT, map<string,vector<QuizCard>> cardsMap);
 
     /**
+     * @brief Destrutor padrão da classe CardService.
+     */
+    ~CardService() = default;
+
+    /**
      * @brief Gera um cartão aleatório.
      * @return O cartão gerado.
      * @throw NoCardsAvailable Se não houver cartões disponíveis.
