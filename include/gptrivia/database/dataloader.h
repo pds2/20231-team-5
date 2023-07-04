@@ -49,11 +49,6 @@ class DataLoader{
      * @throw FileDoesNotOpen Se não for possível abrir o arquivo.
      */
     DataLoader(const string filename);
-    
-    /**
-     * @brief Destrutor padrão da classe DataLoader.
-     */
-    ~DataLoader() = default;
 
     /**
      * @brief Obtém o mapa de cartões.
