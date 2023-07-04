@@ -10,6 +10,8 @@ EventService::~EventService(){
     }
 }
 
+
+
 Event* EventService::getEvent(string event_name){
     for (Event* event : this->events){
         if (event->getName() == event_name){

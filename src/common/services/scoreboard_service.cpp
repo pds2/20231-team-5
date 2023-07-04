@@ -8,7 +8,7 @@ ScoreboardService::ScoreboardService(vector<Player*> players) {
     for (Player* player : players) {
         if(player == nullptr){
             throw PlayerDoesNotExistException();
-        }
+        }      
         scoreboard[player->getId()] = 0.0;
     }
 }
