@@ -5,7 +5,7 @@
 #include <algorithm>
 
 #include "../../../include/gperfil/service/rodada.h"
-#include "rodada.h"
+
 
 Rodada::Rodada(int pontuacao_da_rodada) : aiService(" ")
 {
