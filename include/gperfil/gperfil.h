@@ -5,8 +5,8 @@
 #include "../common/services/ai_service.h"
 #include "../common/services/player_service.h"
 #include "../common/services/scoreboard_service.h"
-#include "../include/gperfil/database/dataImporter.h"
-#include "../include/gperfil/database/themeObjectGenerator.h"
+#include "../../include/gperfil/database/dataImporter.h"
+#include "../../include/gperfil/database/themeObjectGenerator.h"
 
 const int PONT_RODADA = 20;
 const int QNT_RODADA = 2;
