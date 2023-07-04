@@ -42,10 +42,17 @@ class EventService{
         ~EventService();
 
         /**
-         * @brief Retorna um evento cadastrado no serviço pelo nome.
-         * @param event_name Nome do evento a ser retornado.
-         * @return Ponteiro para o evento.
-         * @throws EventDoesNotExistException se o evento não existir.
+        * @brief Adiciona um evento ao serviço de eventos.
+        * 
+        * @param event Um ponteiro para o evento a ser adicionado.
+        */
+        void addEvent(Event* event);
+
+        /**
+        * @brief Retorna um evento cadastrado no serviço pelo nome.
+        * @param event_name Nome do evento a ser retornado.
+        * @return Ponteiro para o evento.
+        * @throws EventDoesNotExistException se o evento não existir.
         */
         Event* getEvent(string event_name);
 
