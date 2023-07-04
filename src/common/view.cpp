@@ -12,7 +12,7 @@ using namespace std;
 
 #include <algorithm>
 
-View::View(PlayerService* player_service, string header) : 
+View::View(PlayerService* player_service) : 
     scoreboard_service(nullptr), player_service(player_service) {
 
     if (player_service == nullptr) {
