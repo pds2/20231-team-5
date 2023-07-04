@@ -40,14 +40,6 @@ class EventService{
          * @brief Destrutor da classe EventService.
         */
         ~EventService();
-        
-        /**
-        * @brief Adiciona um evento ao serviço de eventos.
-        * 
-        * @param event Um ponteiro para o evento a ser adicionado.
-        */
-        void addEvent(Event* event);
-
 
         /**
          * @brief Retorna um evento cadastrado no serviço pelo nome.
