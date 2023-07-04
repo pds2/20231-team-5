@@ -56,10 +56,16 @@ class ViewTrivia : public View {
     ViewTrivia(PlayerService* player_service);
 
     /**
+     * @brief Destrutor padrão da classe ViewTrivia.
+     */
+    ~ViewTrivia() = default;
+
+    /**
      * @brief Exibe o menu e retorna o tipo de jogo escolhido pelo jogador.
+     * @param header O cabeçalho a ser exibido acima do conteúdo.
      * @return O tipo de jogo selecionado (SinglePlayer ou MultiPlayer).
      */
-    GameType displayMenu();
+    GameType displayMenu(const string header);
 
     /**
      * @brief Exibe uma pergunta e retorna a resposta do jogador.

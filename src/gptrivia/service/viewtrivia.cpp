@@ -4,11 +4,11 @@
 
 ViewTrivia::ViewTrivia(PlayerService* player_service) : View(player_service) {} 
 
-GameType ViewTrivia::displayMenu(){
+GameType ViewTrivia::displayMenu(const string header){
   vector<string> content{}; // Cria um vetor vazio de strings para armazenar o conteúdo
 
   addEmptyLines(content,1);
-  addToNextLine(content,"Bem vindo ao GPTrivia. Digite a opção desejada!"); 
+  addToNextLine(content,"Bem vindo ao "+header+". Digite a opção desejada!"); 
   addEmptyLines(content,5);
   addToNextLine(content,"SINGLEPLAYER ----------------- S");
   addEmptyLines(content,1);
