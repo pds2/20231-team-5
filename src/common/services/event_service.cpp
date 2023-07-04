@@ -6,8 +6,12 @@ EventService::EventService(vector<Event*> events){
 
 EventService::~EventService(){
     for (Event* event : this->events){
-        delete event;
+        //delete event;
     }
+}
+
+void EventService::addEvent(Event* event) {
+    events.push_back(event);
 }
 
 Event* EventService::getEvent(string event_name){
