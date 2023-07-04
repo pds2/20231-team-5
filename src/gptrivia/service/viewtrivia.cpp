@@ -4,11 +4,11 @@
 
 ViewTrivia::ViewTrivia(PlayerService* player_service) : View(player_service) {} 
 
-GameType ViewTrivia::displayMenu(){
+GameType ViewTrivia::displayMenu(const string header){
   vector<string> content{}; // Cria um vetor vazio de strings para armazenar o conteúdo
 
   addEmptyLines(content,1);
-  addToNextLine(content,"Bem vindo ao GPTrivia. Digite a opção desejada!"); 
+  addToNextLine(content,"Bem vindo ao "+header+". Digite a opção desejada!"); 
   addEmptyLines(content,5);
   addToNextLine(content,"SINGLEPLAYER ----------------- S");
   addEmptyLines(content,1);
@@ -22,7 +22,7 @@ GameType ViewTrivia::displayMenu(){
   GameType gameType{}; // Armazena o tipo de jogo selecionado
 
   while(loopAgain){
-    char userChoice=getUserChoice(content,"GPTrivia"); // Obtém a escolha do usuário
+    char userChoice=getUserChoice(content,header); // Obtém a escolha do usuário
 
     switch (userChoice)
     {
@@ -141,11 +141,15 @@ void ViewTrivia::displayFeedback(const string feedback, std::vector<string>& con
   addToNextLine(content,feedback);
   addEmptyLines(content,2);
 
+  getUserEnter(content, header);
+}
+
+void ViewTrivia::getUserEnter(const vector<string>& content, const string header){
   setHeader(header);
   setContent(content);
+
   while(true){
     string userEnter=display("--ENTER--"); // Exibe a mensagem "--ENTER--" e aguarda a entrada do usuário
-
     if(userEnter.empty()) break; // Se o usuário pressionar apenas Enter, sai do loop
   }
 }
@@ -190,7 +194,7 @@ unsigned int ViewTrivia::getNumberOfPlayers(){
       if(numPlayers>4||numPlayers<=1) throw InvalidNumber(); // Lança uma exceção se o número estiver fora do intervalo válido
       break;
     }catch(const std::exception& e){
-      // Caso ocorra uma exceção, continua solicitando um número válido
+      // Continua solicitando um número válido caso ocorra uma exceção
     }
   }
 
@@ -223,7 +227,7 @@ vector<string> ViewTrivia::getUsernamesList(vector<string>& content, int numPlay
   addToNextLine(content, "Adicione os usernames dos jogadores (máximo 15 caracteres).");
   addEmptyLines(content, 2);
 
-  vector<string> usernamesList{}; // Armazena nomes de usuários de jogadores
+  vector<string> usernamesList{}; // Armazena os nomes de usuários de jogadores
   usernamesList.reserve(numPlayers);
 
   // Loop para obter o nome de usuário de cada jogador
