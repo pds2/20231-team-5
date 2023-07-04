@@ -56,11 +56,6 @@ class ViewTrivia : public View {
     ViewTrivia(PlayerService* player_service);
 
     /**
-     * @brief Destrutor padrão da classe ViewTrivia.
-     */
-    ~ViewTrivia() = default;
-
-    /**
      * @brief Exibe o menu e retorna o tipo de jogo escolhido pelo jogador.
      * @param header O cabeçalho a ser exibido acima do conteúdo.
      * @return O tipo de jogo selecionado (SinglePlayer ou MultiPlayer).
@@ -91,7 +86,7 @@ class ViewTrivia : public View {
      * @return A escolha do jogador.
      */
     char getUserChoice(const vector<string>& content, const string header);
-
+    
     /**
      * @brief Obtém a resposta do jogador exibida na interface.
      * @param content Um vetor de strings contendo o conteúdo da interface.
@@ -99,6 +94,13 @@ class ViewTrivia : public View {
      * @return A resposta do jogador.
      */
     string getUserAnswer(const vector<string>& content, const string header);
+
+    /**
+     * @brief Solicita ao usuário que pressione Enter para continuar a execução.
+     * @param content Um vetor de strings contendo o conteúdo da interface.
+     * @param header O cabeçalho a ser exibido acima do conteúdo.
+     */
+    void getUserEnter(const vector<string>& content, const string header);
 
   private:
     /**
