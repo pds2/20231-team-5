@@ -27,11 +27,6 @@ class QuizCard{
      * @param answer A resposta do cartão.
      */
     QuizCard(const string question, const string answer);
-    
-    /**
-     * @brief Destrutor padrão da classe QuizCard.
-     */
-    ~QuizCard() = default;
 
     /**
      * @brief Obtém a resposta do cartão.
