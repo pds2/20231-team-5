@@ -129,7 +129,9 @@ string ViewTrivia::displayQuestion(const QuizCard& userCard, std::vector<string>
   addToNextLine(content,"SUA RESPOSTA: ");
   addToCurrentLine(content,userAnswer);
   addEmptyLines(content,1);
-  content.push_back("---------------------------------------------------------------------------"); // Adiciona uma linha separadora ao conteúdo
+  // Adiciona uma linha separadora ao conteúdo
+  addToNextLine(content,"--------------------------------------");
+  addToCurrentLine(content,"-------------------------------------");
   addEmptyLines(content,1);
 
   return userAnswer; 
