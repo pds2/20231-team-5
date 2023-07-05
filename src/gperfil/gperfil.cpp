@@ -1,24 +1,33 @@
 #include "../../include/gperfil/gperfil.h"
 
-void Gperfil::Rodada_p(ScoreboardService &scoreboardService, PlayerService &playerService)
+#include "../../include/gperfil/database/themeObjectGenerator.h"
+#include "../../include/gperfil/service/viewperfil.h"
+
+
+void Gperfil::Rodada_p(ScoreboardService &scoreboardService)
 {
     for (int n_rodada = 1; n_rodada <= QNT_RODADA; n_rodada++)
     {
         Rodada currentRound(PONT_RODADA);
-        ThemeObjectGenerator objeto_E_tema;
+        ThemeObjectGenerator objeto_E_tema=ThemeObjectGenerator();
         objeto_E_tema.sortear_objeto();
         std::string tema = objeto_E_tema.get_tema();
         std::string objeto = objeto_E_tema.get_objeto();
         continuar = true;
-        vez_do_jogador(currentRound, scoreboardService, playerService, tema, objeto);
+        vez_do_jogador(currentRound, scoreboardService, tema, objeto);
     }
 }
 
-void Gperfil::vez_do_jogador(Rodada &x, ScoreboardService &scoreboardService, PlayerService &playerService, std::string tema, std::string objeto)
+Gperfil::Gperfil() : _view(&_playerservice)
+{
+}
+
+void Gperfil::vez_do_jogador(Rodada &x, ScoreboardService &scoreboardService, std::string tema, std::string objeto)
 {
     while (continuar)
     {
-        Player &currentPlayer = playerService.getCurrentPlayer();
+        Player &currentPlayer = _playerservice.getCurrentPlayer();
+
         std::cout << "Tema: " << tema << std::endl;
         std::cout << "Objeto: " << objeto << std::endl;
         std::cout << "Vez do jogador " << currentPlayer.getId() << ": " << currentPlayer.getName() << std::endl;
@@ -26,10 +35,10 @@ void Gperfil::vez_do_jogador(Rodada &x, ScoreboardService &scoreboardService, Pl
         std::cout << "faça a pergunta:" << std::endl;
         std::getline(std::cin, pergunta);
         x.fazer_pergunta(pergunta, tema, objeto);
-        resposta_do_jogador(x, currentPlayer, scoreboardService, playerService, objeto);
+        resposta_do_jogador(x, currentPlayer, scoreboardService, objeto);
     }
 }
-void Gperfil::resposta_do_jogador(Rodada &x, Player &currentPlayer, ScoreboardService &scoreboardService, PlayerService &playerService, std::string objeto)
+void Gperfil::resposta_do_jogador(Rodada &x, Player &currentPlayer, ScoreboardService &scoreboardService, std::string objeto)
 {
     std::cout << "Tente acertar:" << std::endl;
     cin.ignore();
@@ -45,7 +54,7 @@ void Gperfil::resposta_do_jogador(Rodada &x, Player &currentPlayer, ScoreboardSe
         std::cout << "Pressione Enter para continuar...";
         std::cin.ignore();
         std::cin.get();
-        playerService.changeCurrentPlayer();
+        _playerservice.changeCurrentPlayer();
         continuar = false;
     }
     else if (x.verificar_pont_rod_neg_or_zero())
@@ -58,6 +67,14 @@ void Gperfil::resposta_do_jogador(Rodada &x, Player &currentPlayer, ScoreboardSe
     {
         std::cout << "Resposta incorreta!" << std::endl;
         x.decrease_pontuacao_rodada();
-        playerService.changeCurrentPlayer(); // Passa para o próximo jogador
+        _playerservice.changeCurrentPlayer(); // Passa para o próximo jogador
     }
+}
+
+void Gperfil::Gperfil_jogo()
+{  std::cout << "Aqui foi 1" << std::endl;
+    _view.displayMenu();
+    ScoreboardService placar = ScoreboardService(_playerservice.getPlayers());
+    _view.setScoreboardService(&placar);
+    Rodada_p(placar);
 }
