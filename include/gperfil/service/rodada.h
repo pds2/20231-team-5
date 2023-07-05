@@ -1,18 +1,8 @@
-/**
- * @file rodada.h
- * @brief Definição da classe Rodada
- */
 #ifndef RODADA_H
 #define RODADA_H
 
-#include <vector>
 #include <string>
-#include <map>
-#include "../../common/services/player_service.h"
-#include "../../common/database/player.h"
 #include "../../common/services/ai_service.h"
-#include "../../common/services/scoreboard_service.h"
-#include <iostream>
 #include <regex>
 
 class Rodada
