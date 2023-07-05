@@ -1,6 +1,5 @@
 #ifndef THEME_OBJECT_GENERATOR_H
 #define THEME_OBJECT_GENERATOR_H
-#include <vector>
 #include <string>
 #include "dataImporter.h"
 
