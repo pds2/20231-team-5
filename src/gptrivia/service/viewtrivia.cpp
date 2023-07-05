@@ -184,7 +184,7 @@ unsigned int ViewTrivia::getNumberOfPlayers(){
   vector<string> content{};
 
   addEmptyLines(content,1);
-  addToNextLine(content,"Digite o número de jogadores: (máximo 4):");
+  addToNextLine(content,"Digite o número de jogadores (máximo 4):");
 
   unsigned int numPlayers{};
   while(true){
