@@ -6,13 +6,13 @@
 using namespace std;
 
 TEST_CASE("Test constructor"){
-    CHECK_NOTHROW(View(new PlayerService(), "header"));
-    CHECK_THROWS_AS(View(nullptr, "header"), InvalidArgumentException);
-    CHECK_NOTHROW(View(new PlayerService(), ""));
+    CHECK_NOTHROW(View(new PlayerService()));
+    CHECK_THROWS_AS(View(nullptr), InvalidArgumentException);
+    CHECK_NOTHROW(View(new PlayerService()));
 }
 
 TEST_CASE("Scoreboard logic"){
-    View view = View(new PlayerService(), "header");
+    View view = View(new PlayerService());
     CHECK_NOTHROW(view.setScoreboardService(new ScoreboardService(vector<Player*>())));
 
     CHECK_THROWS_AS(view.setScoreboardService(nullptr), InvalidArgumentException);
@@ -20,7 +20,7 @@ TEST_CASE("Scoreboard logic"){
 }
 
 TEST_CASE("Test content logic without scoreboard"){
-    View view = View(new PlayerService(), "header");
+    View view = View(new PlayerService());
     CHECK(view.getContent().size() == 20);
     
     string empty_line = "";
@@ -77,7 +77,7 @@ TEST_CASE("Test content logic without scoreboard"){
 }
 
 TEST_CASE("Test content logic with scoreboard"){
-    View view = View(new PlayerService(), "header");
+    View view = View(new PlayerService());
     CHECK(view.getContent().size() == 20);
     
     PlayerService player_service = PlayerService();
@@ -143,7 +143,7 @@ TEST_CASE("Test content logic with scoreboard"){
 }
 
 TEST_CASE("Test setContent(vector<string> content)"){
-    View view = View(new PlayerService(), "header");
+    View view = View(new PlayerService());
 
     vector<string> content = vector<string>();
     string line_content = "aaaaaaaaaaaaaaaaaaaaaaaaa";
