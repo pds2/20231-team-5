@@ -1,12 +1,20 @@
 #include "../../../include/common/services/event_service.h"
 
-EventService::EventService(vector<Event*> events){
-    this->events = events;
+EventService::EventService()
+{
+    //this->events = events;
+    ExtraPointsEvent* event1 = new ExtraPointsEvent();
+    DeletePlayerEvent* event2= new DeletePlayerEvent();
+
+    addEvent(event1);
+    addEvent(event2);
+
+    //events[0]->run(PlayerService *player_service, ScoreboardService *scoreboard_service);
 }
 
 EventService::~EventService(){
     for (Event* event : this->events){
-        //delete event;
+        delete event;
     }
 }
 

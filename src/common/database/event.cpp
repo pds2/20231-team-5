@@ -10,6 +10,9 @@ Event::Event(EventType type){
     this->active = true;
 }
 
+Event::~Event() {}
+
+
 EventType Event::getType(){
     return this->type;
 }

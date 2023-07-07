@@ -25,6 +25,7 @@ public:
      * Define o nome e a descrição do evento.
      */
     ExtraPointsEvent();
+    ~ExtraPointsEvent();
 
     /**
      * @brief Executa o evento ExtraPointsEvent, concedendo pontos extras ao jogador atual.

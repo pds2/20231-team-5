@@ -59,6 +59,7 @@ class Event{
          * @param type Tipo do evento.
         */
         Event(EventType type);
+        virtual ~Event();
         
         /**
          * @brief Retorna o tipo do evento.

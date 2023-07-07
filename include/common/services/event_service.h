@@ -8,6 +8,8 @@
 #define EVENT_SERVICE
 
 #include "../database/event.h"
+#include "./delete_player_event.h"
+#include "./extra_points_event.h"
 
 using namespace std;
 
@@ -34,8 +36,9 @@ class EventService{
          * @brief Construtor da classe EventService.
          * @param events Vetor de ponteiros para eventos a serem adicionados ao serviço.
         */
-        EventService(vector<Event*> events);
-
+        //EventService(vector<Event*> events);
+        
+        EventService();
         /**
          * @brief Destrutor da classe EventService.
         */

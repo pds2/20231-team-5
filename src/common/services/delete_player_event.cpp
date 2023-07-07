@@ -10,6 +10,7 @@ DeletePlayerEvent::DeletePlayerEvent() : Event(EventType::RANDOM)
         this->description = "Evento que exclui um player do jogo.";
 }
 
+DeletePlayerEvent::~DeletePlayerEvent(){}
 
 bool DeletePlayerEvent::canRun()
 {
@@ -53,5 +54,6 @@ void DeletePlayerEvent::run(PlayerService* player_service, ScoreboardService* sc
         
         player_service->removePlayer(currentPlayer.getId());
 }
+
 
 

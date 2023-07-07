@@ -10,6 +10,8 @@ ExtraPointsEvent::ExtraPointsEvent() : Event(EventType::RANDOM)
         this->description = "Evento que aumenta a pontuação do jogador atual.";
 }
 
+ExtraPointsEvent::~ExtraPointsEvent(){}
+
 /**
  * @brief Executa o evento ExtraPointsEvent, concedendo pontos extras ao jogador atual.
  * 

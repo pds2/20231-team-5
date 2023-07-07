@@ -20,6 +20,7 @@ class DeletePlayerEvent : public Event
 		 * Inicializa os atributos name e description com valores adequados para o evento DeletePlayerEvent.
 		 */
 		DeletePlayerEvent();
+		~DeletePlayerEvent();;
 		
 		/**
 		 * @brief Verifica se o evento DeletePlayerEvent pode ser executado.
