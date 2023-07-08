@@ -5,19 +5,20 @@
 using std::string;
 
 #include "../../include/common/services/ai_service.h"
+#include "../../include/common/game.h"
 #include "database/dataloader.h"
 #include "service/cardservice.h"
 #include "service/viewtrivia.h"
 
-class GPTrivia{
+class GPTrivia : public Game{
+
   public:
     GPTrivia();
-    void playGame();
-  
+    void playGame() override;
+
   private:
-    static const unsigned int numberOfRounds = 10;
+    static const unsigned int numberOfRounds = 1; // COLOCAR 10
     unsigned int numRound;
-    string filename;
 
     DataLoader dataLoader;
     AIService chatGPT;
@@ -25,12 +26,12 @@ class GPTrivia{
     PlayerService playerService;
     ViewTrivia viewTrivia;
 
-    void multiPlayer();
-    void singlePlayer();
-    void round(ScoreboardService& scoreboardService);
-    void processPlayerTurn(ScoreboardService& scoreboardService,const string header);
-    void updateScore(ScoreboardService& scoreboardService,const bool isCorrectAnswer);
-    void resetData();
+    void singlePlayer() override;
+    void multiPlayer() override;
+    void round(ScoreboardService& scoreboardService) override;
+    void processPlayerTurn(ScoreboardService& scoreboardService, const string header) override;
+    void resetData() override;
+    void updateScore(const unsigned int userTime, ScoreboardService& scoreboardService, const bool isCorrectAnswer);
     string getHeader();
 
 };
