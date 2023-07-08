@@ -1,99 +1,118 @@
 #include "../include/gptrivia/gptrivia.h"
 
 #include <iostream>
-#include <chrono>
-#include <thread>
 
 const unsigned int GPTrivia::numberOfRounds;
 
-GPTrivia::GPTrivia() : filename("triviacards.txt"), dataLoader(filename), chatGPT(""), cardService(&chatGPT,dataLoader.getCardsMap()), viewTrivia(&playerService) {}
+GPTrivia::GPTrivia() : dataLoader(), chatGPT(""), cardService(&chatGPT, dataLoader.getCardsMap()), viewTrivia(&playerService) {}
 
 void GPTrivia::playGame(){
-  try{
-    //apresenta o menu e obtém o modo de jogo
-    GameType gameType=viewTrivia.displayMenu("GPTrivia");
+  try {
+    while (true) {
+      // Apresenta o menu e obtém o modo de jogo
+      GameType gameType = viewTrivia.displayMenu();
 
-    //inicia o jogo com base na escolha do jogador
-    if(gameType==MultiPlayer) multiPlayer();
-    if(gameType==SinglePlayer) singlePlayer();
-  }catch(const ExitGame &e){
+      // Inicia o jogo com base na escolha do jogador
+      if (gameType == SinglePlayer) singlePlayer();
+      if (gameType == MultiPlayer) multiPlayer();
 
-    //implementar fechamento do jogo
+      // Reinicia os dados do jogo
+      resetData();
+    }
+  } catch (const ExitGame &e) {
+    //IMPLEMENTAR FECHAMENTO
     cout<<"FIM DE JOGO"<<endl;
   }
 }
 
 void GPTrivia::singlePlayer(){
-  //implementar singleplayer
+  //IMPLEMENTAR SINGLEPLAYER
 }
 
 void GPTrivia::multiPlayer(){
-  ScoreboardService scoreboardService=ScoreboardService(playerService.getPlayers());
+  // Configura o placar do jogo
+  ScoreboardService scoreboardService = ScoreboardService(playerService.getPlayers());
   viewTrivia.setScoreboardService(&scoreboardService);
 
-  for(int i=1;i<=numberOfRounds;i++){
-    numRound=i;
+  // Executa todas as rodadas
+  for (unsigned int i = 1; i <= numberOfRounds; i++) {
+    numRound = i;
     round(scoreboardService);
   }
-  //implementar ranking após acabar todas as rodadas
+
+  // Apresenta o ranking após acabar todas as rodadas
+  viewTrivia.displayRanking(scoreboardService);
 }
 
 void GPTrivia::round(ScoreboardService& scoreboardService){
-  //obtém header da rodada
-  string header=getHeader();
+  // Obtém o header da rodada
+  string header = getHeader();
 
-  //itera sobre cada jogador
-  int numberOfPlayers=playerService.getPlayers().size();
-  for(int i=0; i<numberOfPlayers; i++){
-    processPlayerTurn(scoreboardService,header);
+  // Obtém a quantidade de jogadores
+  unsigned int numberOfPlayers = playerService.getPlayers().size();
+
+  // Itera sobre todos os jogador
+  for (unsigned int i = 0; i < numberOfPlayers; i++) {
+    playerTurn(scoreboardService, header);
     playerService.changeCurrentPlayer();
   }
 }
 
-void GPTrivia::processPlayerTurn(ScoreboardService& scoreboardService, const string header){
+void GPTrivia::playerTurn(ScoreboardService& scoreboardService, const string header){
   std::vector<string> content=std::vector<string>();
 
-  //gera card
-  QuizCard userCard=cardService.generateCard();
+  // Gera um card
+  QuizCard userCard = cardService.generateCard();
 
-  //apresenta pergunta e obtém resposta
-  string userAnswer=viewTrivia.displayQuestion(userCard, content, header);
+  // Apresenta a pergunta e obtém a resposta e o tempo de resposta
+  std::pair<string, unsigned int> answerTime = viewTrivia.displayQuestion(userCard, content, header);
+  string userAnswer = answerTime.first;
+  unsigned int userTime = answerTime.second;
 
-  //avalia resposta
-  bool isCorrectAnswer=cardService.evaluateAnswer(userCard, userAnswer);
+  // Avalia a resposta
+  bool isCorrectAnswer = cardService.evaluateAnswer(userCard, userAnswer);
 
-  while(true){
-    try{
-      //gera feedback
-      string feedback=cardService.getFeedback(userCard,isCorrectAnswer);
+  while (true) {
+    try {
+      // Gera um feedback
+      string feedback = cardService.getFeedback(userCard, isCorrectAnswer);
 
-      //apresenta correção
-      viewTrivia.displayFeedback(feedback,content,header);
+      // Apresenta a correção
+      viewTrivia.displayFeedback(feedback, content, header);
 
       break;
-    }catch(const std::exception& e){
-      for(int i=0; i<3; i++) content.pop_back();
+    } catch (const std::exception& e){
+        // Remove a string feedback problemática
+        for (int i = 0; i < 3; i++) content.pop_back();
     }
   }
 
-  //altera pontuação
-  updateScore(scoreboardService,isCorrectAnswer);
+  // Altera a pontuação
+  updateScore(answerTime, scoreboardService, isCorrectAnswer);
 }
 
-void GPTrivia::updateScore(ScoreboardService& scoreboardService, const bool isCorrectAnswer){
-  Player& currentPlayer=playerService.getCurrentPlayer();
-  if(isCorrectAnswer) scoreboardService.changeScore(currentPlayer.getId(), 10);
-}
+void GPTrivia::updateScore(const unsigned int answerTime, ScoreboardService& scoreboardService, const bool isCorrectAnswer){
+  Player& currentPlayer = playerService.getCurrentPlayer();
+  unsigned int score{0};
 
-string GPTrivia::getHeader(){
-  std::string numString=std::to_string(numRound);
-  std::string header="GPTrivia - RODADA "+numString;
-
-  return header;
+  if (isCorrectAnswer) {
+    if (answerTime <= 5) score = 10;
+    else if (answerTime <= 10) score = 8;
+    else score = 6;
+    //PROCESSAR EVENTO
+    scoreboardService.changeScore(currentPlayer.getId(), score);
+  }
 }
 
 void GPTrivia::resetData(){
-  cardService=CardService(&chatGPT, dataLoader.getCardsMap());
-  playerService=PlayerService();
-  viewTrivia=ViewTrivia(&playerService);
+  cardService = CardService(&chatGPT, dataLoader.getCardsMap());
+  playerService = PlayerService();
+  viewTrivia = ViewTrivia(&playerService);
+}
+
+string GPTrivia::getHeader(){
+  std::string numString = std::to_string(numRound);
+  std::string header = "GPTrivia - RODADA " + numString;
+
+  return header;
 }
