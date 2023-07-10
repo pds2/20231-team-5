@@ -22,7 +22,7 @@ bool contemCaracteresNaoEscapados(const std::string &str)
     return false; // Nenhum caractere não escapado encontrado
 }
 
-void Rodada::fazer_pergunta(std::string pergunta, std::string tema, std::string objeto)
+std::string Rodada::fazer_pergunta(std::string pergunta, std::string tema, std::string objeto)
 {
     decrease_pontuacao_rodada();
     std::string tema_para_prompt = tema;
@@ -52,7 +52,7 @@ void Rodada::fazer_pergunta(std::string pergunta, std::string tema, std::string 
     //                      "', e vc irá responder sem citar '" + objeto_para_prompt + "'.";
     std::string prompt = "A pergunta é: " + pergunta;
     std::string resposta = aiService.chat(prompt);
-    std::cout << resposta << std::endl;
+    return resposta;
 }
 
 double Rodada::calcularSimilaridade(const std::string &resposta_usuario, std::string objeto)
@@ -132,7 +132,7 @@ int Rodada::get_pontuacao_da_rodada()
 
 void Rodada::decrease_pontuacao_rodada()
 {
-    _pontuacao_da_rodada -= 1;
+    _pontuacao_da_rodada -= 2;
 }
 
 bool Rodada::verificar_fim_rodada(std::string resposta, std::string objeto)

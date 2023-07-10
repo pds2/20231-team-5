@@ -2,10 +2,11 @@
 #include "../../include/gptrivia/gptrivia.h"
 #include "../../include/gperfil/gperfil.h"
 
+
 GPManager::GPManager() : viewManager() {
   // Insere os jogos disponíveis no mapa de jogos
   games.insert(std::make_pair<EnumChoice, Game*>(Trivia, new GPTrivia()));
-  games.insert(std::make_pair<EnumChoice, Game*>(Perfil, new GPerfil()));
+  games.insert(std::make_pair<EnumChoice, Game*>(Perfil, new Gperfil()));
 }
 
 GPManager::~GPManager() {

@@ -187,3 +187,107 @@
 //   unsigned int index=content.size()-1;
 //   content[index]+=newContent;
 // }
+
+
+
+
+#include <cctype>
+
+#include "../../../include/gperfil/service/viewperfil.h"
+
+ViewPerfil::ViewPerfil() : ViewGame("GPPerfil") {}
+
+
+
+string ViewPerfil::displaypergunta(std::vector<string> &content, const string header, std::string tema)
+{
+  addToNextLine(content, "TEMA : " + tema);
+  addEmptyLines(content, 2);
+  addToNextLine(content, "Faça sua pergunta para tentar advinhar o objeto: ");
+  addEmptyLines(content, 2);
+
+  std::string userAnswer{};
+  while (true)
+  {
+    userAnswer = getUserAnswer(content, header, "Faça sua pergunta: "); // Obtém a resposta do usuário
+
+    // Verifica se a resposta contém o caractere '\' e continua solicitando uma resposta se conter
+    if (userAnswer.find('\\') == std::string::npos)
+      break;
+  }
+
+  // Adiciona a resposta do usuário ao conteúdo
+  addToNextLine(content, "SUA Pergunta: ");
+  addToCurrentLine(content, userAnswer);
+  addEmptyLines(content, 1);
+  // Adiciona uma linha separadora ao conteúdo
+  addToNextLine(content, "--------------------------------------");
+  addToCurrentLine(content, "-------------------------------------");
+  addEmptyLines(content, 1);
+
+  return userAnswer;
+}
+
+string ViewPerfil::displayresposta(std::vector<string> &content, const string header, std::string tema, std::string resposta_chat)
+{
+  addToNextLine(content, "Resposta do chatGPT: " + resposta_chat);
+  addEmptyLines(content, 2);
+  addToNextLine(content, "Tente advinhar o objeto: ");
+  addEmptyLines(content, 2);
+
+  std::string userAnswer{};
+  while (true)
+  {
+    userAnswer = getUserAnswer(content, header, "Tente advinhar: "); // Obtém a resposta do usuário
+
+    // Verifica se a resposta contém o caractere '\' e continua solicitando uma resposta se conter
+    if (userAnswer.find('\\') == std::string::npos)
+      break;
+  }
+
+  // Adiciona a resposta do usuário ao conteúdo
+  addToNextLine(content, "SUA RESPOSTA: ");
+  addToCurrentLine(content, userAnswer);
+  addEmptyLines(content, 1);
+  // Adiciona uma linha separadora ao conteúdo
+  addToNextLine(content, "--------------------------------------");
+  addToCurrentLine(content, "-------------------------------------");
+  addEmptyLines(content, 1);
+
+  return userAnswer;
+}
+
+void ViewPerfil::display_resp_correct(std::string respostaUsuario, std::string corretude, bool acabou)
+{
+  std::vector<string> content_two = std::vector<string>();
+  addToNextLine(content_two, "Sua resposta foi: " + respostaUsuario);
+  addEmptyLines(content_two, 1);
+  addEmptyLines(content_two, 1);
+  addToNextLine(content_two, "Sua resposta está " + corretude + " !!!!");
+  if (acabou)
+  {
+    addToNextLine(content_two, "A rodada acabou \n Ninguem pontuou");
+  }
+  getUserEnter(content_two, "Gperfil");
+}
+
+
+bool ViewPerfil::displayRules(){ 
+  vector<string> content=vector<string>(); // Cria um vetor vazio de strings para armazenar o conteúdo
+
+  addToNextLine(content,"1 - As perguntas serão geradas aleatoriamente de uma ampla variedade de categorias. Prepare-se para testar seus conhecimentos em diferentes áreas!"); 
+  addEmptyLines(content,1); 
+  addToNextLine(content,"2 - A pontuação é baseada na rapidez e precisão das respostas. Quanto mais rápido você responder corretamente, mais pontos você ganhará. "); 
+  addEmptyLines(content,1); 
+  addToNextLine(content,"3 - Cada jogador terá a chance de responder a uma pergunta por rodada. Prepare-se, pois em uma rodada pode ocorrer eventos, que irá te remover do jogo ou dobrar seus pontos. Qual você prefere?");
+  addEmptyLines(content,1); 
+  addToNextLine(content,"4 - No final do jogo, a pontuação de cada jogador será somada para determinar o vencedor. O jogador com a pontuação mais alta é o vencedor do GPTrivia!");
+  addEmptyLines(content,2); 
+  addToNextLine(content,"Voltar ----------------------- V"); 
+
+  while(true){ 
+    char userChoice = getUserChoice(content, "REGRAS"); // Obtém a escolha do usuário
+
+    if(userChoice=='v') return true; // Retorna true se o usuário escolher voltar
+  }
+}

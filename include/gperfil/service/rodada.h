@@ -14,7 +14,7 @@ private:
 public:
     Rodada(int pontuacao_da_rodada);
 
-    void fazer_pergunta(std::string pergunta, std::string tema, std::string objeto);
+    std::string fazer_pergunta(std::string pergunta, std::string tema, std::string objeto);
 
     double calcularSimilaridade(const std::string &resposta_usuario, std::string objeto);
 
