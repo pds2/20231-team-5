@@ -60,7 +60,7 @@ class ViewGame : public View{
     bool displayConfig();
 
     /**
-     * @brief Exibe as regras do jogo na interface.
+     * @brief Exibe as regras na interface.
      */
     virtual bool displayRules() = 0;
 
