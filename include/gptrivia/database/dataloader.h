@@ -57,7 +57,6 @@ class DataLoader{
     map<string, vector<QuizCard>> getCardsMap();
 
   private:
-    string filename;
     map<string, vector<QuizCard>> cardsMap;
 
     /**
