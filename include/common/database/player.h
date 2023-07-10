@@ -27,6 +27,7 @@ class Player{
     private:
         unsigned int id;
         string name;
+        bool is_playing;
 
     public :
         /**
@@ -48,6 +49,17 @@ class Player{
          * @return O nome do jogador.
          */
         string getName();
+
+        /**
+         * @brief Verifica se o jogador está jogando.
+         * @return true se o jogador está jogando, false caso contrário.
+         */
+        bool isPlaying();
+
+        /**
+         * @brief Elimina o jogador do jogo.
+         */
+        void eliminate();
 };
 
 #endif
