@@ -34,6 +34,9 @@
     
 //     // OUTROS METODOS
 
+const int PONT_RODADA = 10;
+const int QNT_RODADA = 2;
+
 class Gperfil : public Game
 {
 

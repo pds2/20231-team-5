@@ -195,7 +195,7 @@
 
 #include "../../../include/gperfil/service/viewperfil.h"
 
-ViewPerfil::ViewPerfil() : ViewGame("GPPerfil") {}
+ViewPerfil::ViewPerfil() : ViewGame("GPerfil") {}
 
 
 
