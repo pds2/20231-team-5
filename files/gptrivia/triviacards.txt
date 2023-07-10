@@ -37,3 +37,16 @@ Pergunta: Qual foi o período histórico caracterizado pelo declínio da economi
 Pergunta: Qual foi a cidade antiga que se destacou como um importante centro cultural na Grécia Antiga, lar de grandes filósofos como Sócrates, Platão e Aristóteles? Resposta: Atenas.
 Pergunta: Qual foi o tratado que encerrou a Primeira Guerra Mundial? Resposta: Tratado de Versalhes.
 Pergunta: Qual foi a civilização antiga que desenvolveu a escrita cuneiforme e construiu a Torre de Babel? Resposta: Civilização Mesopotâmica.
+
+Tema: Países
+
+Pergunta: Qual país é famoso por suas ruínas antigas, incluindo Machu Picchu? Resposta: Peru.
+Pergunta: Qual país é famoso por suas tradições de sumô e sushi? Resposta: Japão.
+Pergunta: Qual país é conhecido por ter uma das maiores biodiversidades do mundo? Resposta: Brasil.
+Pergunta: Qual é o país mais extenso do mundo em termos de área territorial? Resposta: Rússia.
+Pergunta: Qual país é conhecido como a "Terra dos Cangurus"? Resposta: Austrália.
+Pergunta: Qual país tem a maior população do mundo? Resposta: Índia.
+Pergunta: Qual país é famoso por seus canais e bicicletas como principal meio de transporte? Resposta: Holanda.
+Pergunta: Qual é o país mais populoso da União Europeia? Resposta: Alemanha.
+Pergunta: Qual país é famoso por suas pirâmides antigas e faraós? Resposta: Egito.
+Pergunta: Qual país é conhecido por sua rica história viking e pelos fiordes? Resposta: Noruega.
