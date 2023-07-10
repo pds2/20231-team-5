@@ -69,12 +69,6 @@ class View {
          */
         string getInput();
 
-        /**
-        * @brief Retorna o conteúdo customizável a ser exibido na tela.
-        * @return vector<string>
-        */
-        vector<string> getContent();
-
     protected:
         PlayerService* player_service;
 
@@ -110,6 +104,12 @@ class View {
         * @brief Destrutor virtual da classe View.
         */
         virtual ~View();
+
+        /**
+        * @brief Retorna o conteúdo customizável a ser exibido na tela.
+        * @return vector<string>
+        */
+        vector<string> getContent();
 
         /**
          * @brief Define o serviço de jogador a ser utilizado pelo view.
