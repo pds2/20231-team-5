@@ -1,7 +1,8 @@
 /**
  * @file view.h
- * @brief Arquivo responsável por definir a classe View que serve como base para a interface de um jogo.
-*/
+ * @brief Declaração da classe View.
+ */
+
 #ifndef VIEW
 #define VIEW
 
@@ -34,7 +35,7 @@ class InvalidStateException : public exception {
 };
 
 /**
- * @brief Classe responsável por exibir a interface do jogo e receber e tratar o input do usuário. 
+ * @brief Classe responsável por criar a interface de um jogo e receber o input do usuário. 
 */
 class View {
     private:
@@ -46,7 +47,7 @@ class View {
 
         string header;
         ScoreboardService* scoreboard_service;
-        string user_message;
+        string message;
 
         // Metodos
         void initContent();
@@ -62,38 +63,20 @@ class View {
         vector<pair<string, unsigned int>> formatScoreboard();
         void displayScoreboard();
 
-    protected:
-        PlayerService* player_service;
-        
-    public:
         /**
-         * @brief Classe responsável por gerenciar a exibição de informações na tela e na recepção 
-         * e tratamento do input do usuário.
-         * @param player_service Serviço de jogador do qual as informações dos jogadores serão retiradas.
-         * @param header Cabeçalho customizável a ser exibido na tela, pode ser o nome do jogo.
-         * @throw InvalidArgumentException Caso o serviço de jogador seja nulo.
-         * @throw InvalidStateException Caso o número de linhas disponíveis seja menor que 0.
-         */
-        View(PlayerService* player_service);
-
-        /**
-         * @brief Destrutor da classe View.
-         */
-        ~View();
-
-        /**
-         * @brief Recebe uma entrada do usuário e a trata.
+         * @brief Recebe uma entrada do usuário.
          * @return string 
          */
         string getInput();
 
         /**
-         * @brief Define o conteúdo customizável a ser exibido na tela, ele será separado em diferentes linhas
-         * para caber dentro da interface. Caso ele seja maior que o número de linhas disponíveis, ele será cortado
-         * com ... no final.
-         * @param content 
-         */
-        void setContent(string content);
+        * @brief Retorna o conteúdo customizável a ser exibido na tela.
+        * @return vector<string>
+        */
+        vector<string> getContent();
+
+    protected:
+        PlayerService* player_service;
 
         /**
          * @brief Define o conteúdo customizável a ser exibido na tela. Cada string do vetor será exibida em 
@@ -104,10 +87,34 @@ class View {
         void setContent(vector<string> content);
 
         /**
-         * @brief Define o cabeçalho customizável a ser exibido na tela, pode ser o nome do jogo.
+         * @brief Define o cabeçalho customizável a ser exibido na tela.
          * @param header
          */
         void setHeader(string header);
+
+        /**
+         * @brief Exibe a interface do jogo na tela, com o nome do jogo, conteúdo customizável e o placar.
+         * @param message Mensagem a ser exibida na tela para o usuário no campo de input.
+         * @returns string Input do usuário.
+         */
+        string display(string message);
+        
+    public:
+        // /**
+        //  * @brief Classe responsável por gerenciar a exibição de informações na tela e na recepção 
+        //  * e tratamento do input do usuário.
+        //  * @param player_service Serviço de jogador do qual as informações dos jogadores serão retiradas.
+        //  * @param header Cabeçalho customizável a ser exibido na tela, pode ser o nome do jogo.
+        //  * @throw InvalidArgumentException Caso o serviço de jogador seja nulo.
+        //  * @throw InvalidStateException Caso o número de linhas disponíveis seja menor que 0.
+        //  */
+        // View(PlayerService *player_service);
+
+        // DOCUMENTAR
+        View();
+
+        // DOCUMENTAR
+        void setPlayerService(PlayerService* player_service);
 
         /**
          * @brief Define o serviço de placar a ser utilizado pelo view.
@@ -118,23 +125,10 @@ class View {
         void setScoreboardService(ScoreboardService* scoreboard_service);
 
         /**
-        * @brief Retorna o conteúdo customizável a ser exibido na tela.
-        * @return vector<string>
-        */
-        vector<string> getContent();
-
-        /**
-         * @brief Exibe a interface do jogo na tela, com o nome do jogo, conteúdo customizável e o placar.
-         * @returns string Input do usuário.
+         * @brief Remove o serviço de placar utilizado pelo view.
          */
-        string display();
+        void removeScoreboardService();
 
-        /**
-         * @brief Exibe a interface do jogo na tela, com o nome do jogo, conteúdo customizável e o placar.
-         * @param user_message Mensagem a ser exibida na tela para o usuário no campo de input.
-         * @returns string Input do usuário.
-         */
-        string display(string user_message);
 };
 
 #endif
