@@ -30,6 +30,8 @@ View::View() :
     this->message = "";
 }
 
+View::~View() {}
+
 // View::View(PlayerService *player_service) : 
 //     scoreboard_service(nullptr), player_service(player_service) {
 

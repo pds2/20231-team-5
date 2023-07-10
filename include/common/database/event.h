@@ -21,17 +21,15 @@ class EventTypeMismatchException : public exception {
         }
 };
 
-// POSSUI DUAS DECLARAÇÕES DE MESMA EXCEÇÃO (VIEW.H)
-
-// /**
-//  * @brief Exceção lançada quando um argumento do evento é nulo.
-// */
-// class InvalidArgumentException : public exception {
-//     public:
-//         const char* what() const throw() {
-//             return "Argumento do evento é nulo!";
-//         }
-// };
+/**
+ * @brief Exceção lançada quando um argumento do evento é nulo.
+*/
+class InvalidArgumentEventException : public exception {
+    public:
+        const char* what() const throw() {
+            return "Argumento do evento é nulo!";
+        }
+};
 
 /**
  * @brief Enum que representa o tipo de evento. Eventos aleatórios aconcetecem de forma aleatória,
@@ -118,7 +116,7 @@ class Event{
          * serviços de jogadores e placar são passados como argumento.
          * @param player_service serviço de gerenciamento de jogadores.
          * @param scoreboard_service serviço de gerenciamento do placar.
-         * @throws InvalidArgumentException se algum dos argumentos for nulo.
+         * @throws InvalidArgumentEventException se algum dos argumentos for nulo.
          */
         virtual void run(PlayerService* player_service, ScoreboardService* scoreboard_service) = 0;
 };

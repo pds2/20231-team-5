@@ -114,6 +114,9 @@ class View {
         View();
 
         // DOCUMENTAR
+        virtual ~View();
+
+        // DOCUMENTAR
         void setPlayerService(PlayerService* player_service);
 
         /**

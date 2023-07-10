@@ -8,6 +8,7 @@ class GPerfil : public Game{
   public: 
     GPerfil();
     void playGame() override;
+    // OUTROS METODOS
 
 };
 

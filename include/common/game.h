@@ -18,6 +18,11 @@ class Game{
      * @brief Executa o jogo.
      */
     virtual void playGame() = 0;
+    
+    /**
+     * @brief Destrutor virtual da classe Game.
+     */
+    virtual ~Game() {};
 
 };
 

@@ -1,7 +1,7 @@
 /**
  * @file ai_service.h
  * @brief Este arquivo contém a declaração da classe AIService, que é responsável por fornecer serviços de inteligência artificial para fins genéricos.
-*/
+ */
 
 #ifndef AI_SERVICE
 #define AI_SERVICE
