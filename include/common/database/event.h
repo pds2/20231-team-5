@@ -21,15 +21,17 @@ class EventTypeMismatchException : public exception {
         }
 };
 
-/**
- * @brief Exceção lançada quando um argumento do evento é nulo.
-*/
-class InvalidArgumentException : public exception {
-    public:
-        const char* what() const throw() {
-            return "Argumento do evento é nulo!";
-        }
-};
+// POSSUI DUAS DECLARAÇÕES DE MESMA EXCEÇÃO (VIEW.H)
+
+// /**
+//  * @brief Exceção lançada quando um argumento do evento é nulo.
+// */
+// class InvalidArgumentException : public exception {
+//     public:
+//         const char* what() const throw() {
+//             return "Argumento do evento é nulo!";
+//         }
+// };
 
 /**
  * @brief Enum que representa o tipo de evento. Eventos aleatórios aconcetecem de forma aleatória,
