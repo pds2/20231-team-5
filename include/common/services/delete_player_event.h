@@ -20,8 +20,19 @@ class DeletePlayerEvent : public Event
 		 * Inicializa os atributos name e description com valores adequados para o evento DeletePlayerEvent.
 		 */
 		DeletePlayerEvent();
-		~DeletePlayerEvent();;
 		
+		/**
+     	 * @brief Retorna o nome do evento.
+     	 * @return string nome do evento.
+     	 */
+		string getName() override;
+
+		/**
+     	 * @brief Retorna o nome do evento.
+     	 * @return string nome do evento.
+    	 */
+		string getDescription() override;
+
 		/**
 		 * @brief Verifica se o evento DeletePlayerEvent pode ser executado.
 		 * @return true se o evento pode ser executado.
@@ -34,7 +45,7 @@ class DeletePlayerEvent : public Event
 		 * @param player_service serviço de gerenciamento de jogadores.
 		 * @param scoreboard_service serviço de gerenciamento do placar.
 		 */
-		void run(PlayerService* player_service, ScoreboardService* scoreboard_service) override;
+		void run(unsigned int score, PlayerService* player_service, ScoreboardService* scoreboard_service) override;
 };
 		
 

@@ -3,14 +3,20 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <string>
 
 ExtraPointsEvent::ExtraPointsEvent() : Event(EventType::RANDOM)
+{}
+
+string ExtraPointsEvent::getName()
 {
-        this->name = "ExtraPointEvent";
-        this->description = "Evento que aumenta a pontuação do jogador atual.";
+    return "ExtraPointEvent";
 }
 
-ExtraPointsEvent::~ExtraPointsEvent(){}
+string ExtraPointsEvent::getDescription()
+{
+    return "Evento que aumenta a pontuação do jogador atual.";
+}
 
 /**
  * @brief Executa o evento ExtraPointsEvent, concedendo pontos extras ao jogador atual.
@@ -22,13 +28,11 @@ ExtraPointsEvent::~ExtraPointsEvent(){}
  * @param player_service Serviço de gerenciamento de jogadores.
  * @param scoreboard_service Serviço de gerenciamento do placar.
  */
-void ExtraPointsEvent::run(PlayerService* player_service, ScoreboardService* scoreboard_service)
+void ExtraPointsEvent::run(unsigned int score, PlayerService* player_service, ScoreboardService* scoreboard_service)
 {
-    const int EXTRA_POINTS = 10;  ///< Quantidade fixa de pontos extras a serem concedidos.
-
     Player& player = player_service->getCurrentPlayer();  ///< Obtém o jogador atual.
 
-    int new_score = scoreboard_service->getScore(player.getId()) + EXTRA_POINTS;  ///< Calcula o novo placar.
+    int new_score = score * 2;  ///< Calcula o novo placar.
 
     scoreboard_service->changeScore(player.getId(), new_score);  ///< Atualiza o placar do jogador.
 }

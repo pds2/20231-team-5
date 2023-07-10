@@ -5,12 +5,17 @@
 #include <iostream>
 
 DeletePlayerEvent::DeletePlayerEvent() : Event(EventType::RANDOM)
+{}
+
+string DeletePlayerEvent::getName()
 {
-        this->name = "DeletePlayerEvent";
-        this->description = "Evento que exclui um player do jogo.";
+        return "DeletePlayerEvent";
 }
 
-DeletePlayerEvent::~DeletePlayerEvent(){}
+string DeletePlayerEvent::getDescription()
+{
+        return "Evento que exclui um player do jogo.";
+}
 
 bool DeletePlayerEvent::canRun()
 {
@@ -41,14 +46,13 @@ bool DeletePlayerEvent::canRun()
         return false;
 }
 
-
 /**
  * @brief Executa o evento DeletePlayerEvent, que remove o jogador atual do jogo.
  * 
  * Obtém o jogador atual por meio do serviço de jogadores e, em seguida, remove o jogador do jogo
  * usando o serviço de jogadores.
  */
-void DeletePlayerEvent::run(PlayerService* player_service, ScoreboardService* scoreboard_service)
+void DeletePlayerEvent::run(unsigned int score, PlayerService* player_service, ScoreboardService* scoreboard_service)
 {
 	Player& currentPlayer = player_service->getCurrentPlayer();
         

@@ -25,8 +25,18 @@ public:
      * Define o nome e a descrição do evento.
      */
     ExtraPointsEvent();
-    ~ExtraPointsEvent();
 
+    /**
+     * @brief Retorna o nome do evento.
+     * @return string nome do evento.
+     */
+    string getName() override;
+
+    /**
+     * @brief Retorna a descrição do evento.
+     * @return string a descrição do evento.
+     */
+    string getDescription() override;
     /**
      * @brief Executa o evento ExtraPointsEvent, concedendo pontos extras ao jogador atual.
      * 
@@ -36,7 +46,7 @@ public:
      * @param player_service Serviço de gerenciamento de jogadores.
      * @param scoreboard_service Serviço de gerenciamento do placar.
      */
-    void run(PlayerService* player_service, ScoreboardService* scoreboard_service) override;
+    void run(unsigned int score, PlayerService* player_service, ScoreboardService* scoreboard_service) override;
 };
 
 #endif
