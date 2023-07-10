@@ -8,6 +8,3 @@ RUN apt-get update && \
 
 COPY . /app
 WORKDIR /app
-
-RUN chmod a+x compile_run.sh
-RUN chmod a+x compile_test.sh

@@ -12,7 +12,6 @@ using namespace std;
 
 #include <algorithm>
 
-// ADICIONEI (CONSTRUTOR SEM RECEBER O PLAYERSERVICE. O CONSTRUTOR ANTIGO ESTÁ ABAIXO)
 View::View() : 
     scoreboard_service(nullptr), player_service(nullptr) {
 
@@ -32,29 +31,10 @@ View::View() :
 
 View::~View() {}
 
-// View::View(PlayerService *player_service) : 
-//     scoreboard_service(nullptr), player_service(player_service) {
-
-//     if (player_service == nullptr) {
-//         throw InvalidArgumentException();
-//     }
-
-//     unsigned int line_nb = 20;
-//     this->available_line_nb = line_nb;
-
-//     if(available_line_nb < 0) {
-//         throw InvalidStateException();
-//     }
-
-//     this->initContent();
-//     this-> line_nb = line_nb;
-//     this->column_nb = 80;
-//     this->header = " " + header + " ";
-//     this->message = "";
-// }
-
-// ADICIONEI
 void View::setPlayerService(PlayerService* player_service){
+    if (player_service == nullptr){
+        throw InvalidArgumentException();
+    }
     this->player_service = player_service;
 }
 
@@ -77,7 +57,6 @@ void View::setScoreboardService(ScoreboardService* scoreboard_service) {
     this->available_line_nb = this->available_line_nb - occupied_space;
 }
 
-// ADICIONEI
 void View::removeScoreboardService() {
   this->scoreboard_service = nullptr;
   this->available_line_nb += 4; 
@@ -159,11 +138,9 @@ void View::completeWithEmptyLines(){
     }
 }
 
-// MUDEI
 vector<pair<string, unsigned int>> View::formatScoreboard() {
     vector<pair<string, unsigned int>> formatted_scoreboard = vector<pair<string, unsigned int>>();
 
-    // COLOQUEI A EXCEÇÃO QUE ESTAVA NO CONSTRUTOR AQUI (ME PARECE QUE É A PRIMEIRA VEZ QUE UTILIZA O PLAYERSERVICE, ENTÃO ELE TEM QUE JÁ ESTAR SETADO)
     if (player_service == nullptr) {
         throw InvalidArgumentException();
     }

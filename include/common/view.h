@@ -100,23 +100,22 @@ class View {
         string display(string message);
         
     public:
-        // /**
-        //  * @brief Classe responsável por gerenciar a exibição de informações na tela e na recepção 
-        //  * e tratamento do input do usuário.
-        //  * @param player_service Serviço de jogador do qual as informações dos jogadores serão retiradas.
-        //  * @param header Cabeçalho customizável a ser exibido na tela, pode ser o nome do jogo.
-        //  * @throw InvalidArgumentException Caso o serviço de jogador seja nulo.
-        //  * @throw InvalidStateException Caso o número de linhas disponíveis seja menor que 0.
-        //  */
-        // View(PlayerService *player_service);
-
-        // DOCUMENTAR
+        /**
+        * @brief Construtor da classe View.
+        * @throw InvalidStateException Caso o número de linhas disponíveis seja menor que 0.
+        */
         View();
 
-        // DOCUMENTAR
+        /**
+        * @brief Destrutor da classe View.
+        */
         virtual ~View();
 
-        // DOCUMENTAR
+        /**
+         * @brief Define o serviço de jogador a ser utilizado pelo view.
+         * @param player_service
+         * @throw InvalidArgumentException Caso o serviço de jogador seja nulo.
+         */
         void setPlayerService(PlayerService* player_service);
 
         /**

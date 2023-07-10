@@ -1,6 +1,3 @@
-sudo dockerd -H unix:///var/run/docker.sock &
-
-IMAGE=pds2_tp
-
-docker build -t $IMAGE .
-docker run -it $IMAGE clear; make clean; make tests;echo -e "\n"; bin/tester
+docker build -f Dockerfile.dependencies -t pds2_tp_dependencies .
+docker build -f Dockerfile.tests -t pds2_tp_tests .
+docker run -it pds2_tp_tests

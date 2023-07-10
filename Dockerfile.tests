@@ -1,0 +1,6 @@
+FROM pds2_tp_dependencies
+
+RUN make clean 
+RUN make tests
+
+CMD ["bin/tester"]
