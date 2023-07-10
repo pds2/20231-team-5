@@ -67,9 +67,9 @@ void ViewGame::displayRanking(ScoreboardService& scoreboardService){
   removeScoreboardService(); // Remove o serviço de pontuação
 
   addEmptyLines(content, 2); 
-  addToNextLine(content, "GPjogos ------------------- J"); 
+  addToNextLine(content, "GPjogos ---------------------- J"); 
   addEmptyLines(content, 1); 
-  addToNextLine(content, "Sair ---------------------- X");
+  addToNextLine(content, "Sair ------------------------- X");
   
   bool loopAgain{true};
   while (loopAgain) {
