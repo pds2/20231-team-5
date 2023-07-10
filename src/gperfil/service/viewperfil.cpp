@@ -1,7 +1,7 @@
 #include <cctype>
 #include "../../../include/gperfil/service/viewperfil.h"
 
-ViewPerfil::ViewPerfil() : ViewGame("GPPerfil") {}
+ViewPerfil::ViewPerfil() : ViewGame("GPerfil") {}
 
 std::string ViewPerfil::displaypergunta(std::vector<std::string>& content, const std::string header, std::string tema)
 {
