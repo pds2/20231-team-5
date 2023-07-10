@@ -2,6 +2,8 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <locale>
+#include <codecvt>
 
 ViewGame::ViewGame(string gameName) : gameName(gameName) {}
 
@@ -171,10 +173,17 @@ vector<string> ViewGame::getUsernamesList(vector<string>& content, int numPlayer
     string username = getUserAnswer(content, gameName, "Sua resposta: "); // Obtém a resposta do usuário
     while (true) {
       try {
-        if (username.size() > 15) throw InvalidNameException(); // Lança uma exceção se o username exceder o limite de caracteres
+        if (username.length() > 15) throw InvalidNameException(); // Lança uma exceção se o username exceder o limite de caracteres
+
+        std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+        if(username.length() != converter.from_bytes(username).length()){
+          // Lança uma exceção se o username possuir caracteres especiais
+          throw InvalidNameException();
+        }
+
         break;
       } catch (const InvalidNameException& e) {
-        username = getUserAnswer(content, gameName, "Username muito longo. Digite novamente: "); // Continua solicitando um username válido.
+        username = getUserAnswer(content, gameName, "Username inválido. Digite novamente: "); // Continua solicitando um username válido.
       }
     }
 

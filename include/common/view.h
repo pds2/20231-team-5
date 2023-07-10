@@ -107,7 +107,7 @@ class View {
         View();
 
         /**
-        * @brief Destrutor da classe View.
+        * @brief Destrutor virtual da classe View.
         */
         virtual ~View();
 

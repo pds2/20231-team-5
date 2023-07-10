@@ -4,6 +4,8 @@ GPerfil::GPerfil(){}
 
 void GPerfil::playGame(){}
 
+// OUTROS METODOS
+
 // #include "../../include/gperfil/gperfil.h"
 
 // #include "../../include/gperfil/database/themeObjectGenerator.h"

@@ -13,7 +13,7 @@ void GPTrivia::playGame(){
   // Apresenta o menu
   viewTrivia.displayMenu();
 
-  // Inicia o jogo
+  // Executa as rodadas
   runGameRounds();
 
   // Reinicia os dados do jogo
