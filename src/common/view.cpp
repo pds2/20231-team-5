@@ -12,12 +12,9 @@ using namespace std;
 
 #include <algorithm>
 
-View::View(PlayerService* player_service) : 
-    scoreboard_service(nullptr), player_service(player_service) {
-
-    if (player_service == nullptr) {
-        throw InvalidArgumentException();
-    }
+// ADICIONEI (CONSTRUTOR SEM RECEBER O PLAYERSERVICE. O CONSTRUTOR ANTIGO ESTÁ ABAIXO)
+View::View() : 
+    scoreboard_service(nullptr), player_service(nullptr) {
 
     unsigned int line_nb = 20;
     this->available_line_nb = line_nb;
@@ -30,12 +27,58 @@ View::View(PlayerService* player_service) :
     this-> line_nb = line_nb;
     this->column_nb = 80;
     this->header = " " + header + " ";
-    this->user_message = "";
+    this->message = "";
 }
 
-View::~View() {
-    // delete this->player_service;
-    // delete this->scoreboard_service;
+// View::View(PlayerService *player_service) : 
+//     scoreboard_service(nullptr), player_service(player_service) {
+
+//     if (player_service == nullptr) {
+//         throw InvalidArgumentException();
+//     }
+
+//     unsigned int line_nb = 20;
+//     this->available_line_nb = line_nb;
+
+//     if(available_line_nb < 0) {
+//         throw InvalidStateException();
+//     }
+
+//     this->initContent();
+//     this-> line_nb = line_nb;
+//     this->column_nb = 80;
+//     this->header = " " + header + " ";
+//     this->message = "";
+// }
+
+// ADICIONEI
+void View::setPlayerService(PlayerService* player_service){
+    this->player_service = player_service;
+}
+
+void View::setScoreboardService(ScoreboardService* scoreboard_service) {
+    if(scoreboard_service == nullptr) {
+        throw InvalidArgumentException();
+    }
+
+    if(this->scoreboard_service != nullptr) {
+        // Já setou o placar
+        throw InvalidStateException();
+    }
+
+    this->scoreboard_service = scoreboard_service;
+    int occupied_space = player_service->getPlayers().size();
+    if (occupied_space != 0){
+        // scoreboard_service FOI setado
+        occupied_space +=4;
+    }
+    this->available_line_nb = this->available_line_nb - occupied_space;
+}
+
+// ADICIONEI
+void View::removeScoreboardService() {
+  this->scoreboard_service = nullptr;
+  this->available_line_nb += 4; 
 }
 
 void View::initContent() {
@@ -114,17 +157,14 @@ void View::completeWithEmptyLines(){
     }
 }
 
-string View::getInput() {
-    string input;
-    getline(cin, input);
-    input = this->clean(input);
-    this->user_message = "";
-    return input;
-}
-
+// MUDEI
 vector<pair<string, unsigned int>> View::formatScoreboard() {
     vector<pair<string, unsigned int>> formatted_scoreboard = vector<pair<string, unsigned int>>();
 
+    // COLOQUEI A EXCEÇÃO QUE ESTAVA NO CONSTRUTOR AQUI (ME PARECE QUE É A PRIMEIRA VEZ QUE UTILIZA O PLAYERSERVICE, ENTÃO ELE TEM QUE JÁ ESTAR SETADO)
+    if (player_service == nullptr) {
+        throw InvalidArgumentException();
+    }
     vector<Player*> players = this->player_service->getPlayers();
     string current_player_name = this->player_service->getCurrentPlayer().getName();
     for(Player* player : players) {
@@ -233,13 +273,6 @@ string View::createBottomSeparator(){
     return second_separator;
 }
 
-void View::setContent(string content) {
-    // separa em multiplas linhas
-    this->content = this->splitString(content);
-
-    this->completeWithEmptyLines();
-}
-
 void View::setContent(vector<string> content) {
     this->content = vector<string>();
     for (string line: content){
@@ -261,30 +294,13 @@ void View::setHeader(string header) {
     this->header = " " + header + " ";
 }
 
-void View::setScoreboardService(ScoreboardService* scoreboard_service) {
-    if(scoreboard_service == nullptr) {
-        throw InvalidArgumentException();
-    }
-
-    if(this->scoreboard_service != nullptr) {
-        // Já setou o placar
-        throw InvalidStateException();
-    }
-
-    this->scoreboard_service = scoreboard_service;
-    int occupied_space = player_service->getPlayers().size();
-    if (occupied_space != 0){
-        // scoreboard_service FOI setado
-        occupied_space +=4;
-    }
-    this->available_line_nb = this->available_line_nb - occupied_space;
-}
-
 vector<string> View::getContent() {
     return this->content;
 }
 
-string View::display() {
+string View::display(string message) {
+    this->message = message;
+
     system("clear");
     cout << this->createTopSeparator() << endl;
     cout << this->wrapInBox("") << endl;
@@ -296,14 +312,17 @@ string View::display() {
     }
     cout << this->wrapInBox("") << endl;
 
-    if (this->user_message != ""){
-        cout << this->user_message;
+    if (this->message != ""){
+        cout << this->message;
     }
 
     return this->getInput();
 }
 
-string View::display(string user_message) {
-    this->user_message = user_message;
-    return this->display();
+string View::getInput() {
+    string input;
+    getline(cin, input);
+    input = this->clean(input);
+    this->message = "";
+    return input;
 }
