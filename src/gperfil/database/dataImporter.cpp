@@ -26,14 +26,14 @@ void DataImporter::carregar_arquivos(const std::string &nomeArquivo, std::vector
 
 void DataImporter::adicionar_arquivo_a_vetor()
 {
-    carregar_arquivos("arquivos_objetos/filmes.txt", _Filme);
-    carregar_arquivos("arquivos_objetos/alimentos.txt", _Alimento);
-    carregar_arquivos("arquivos_objetos/cidades.txt", _Cidade);
-    carregar_arquivos("arquivos_objetos/musica.txt", _Musica);
-    carregar_arquivos("arquivos_objetos/paises.txt", _Pais);
-    carregar_arquivos("arquivos_objetos/personalidades_atuais.txt", _Personalidade_Atual);
-    carregar_arquivos("arquivos_objetos/personalidades_historicas.txt", _Personalidade_Historica);
-    carregar_arquivos("arquivos_objetos/livros.txt", _Livro);
+    carregar_arquivos("files/gperfil/filmes.txt", _Filme);
+    carregar_arquivos("files/gperfil/alimentos.txt", _Alimento);
+    carregar_arquivos("files/gperfil/cidades.txt", _Cidade);
+    carregar_arquivos("files/gperfil/musica.txt", _Musica);
+    carregar_arquivos("files/gperfil/paises.txt", _Pais);
+    carregar_arquivos("files/gperfil/personalidades_atuais.txt", _Personalidade_Atual);
+    carregar_arquivos("files/gperfil/personalidades_historicas.txt", _Personalidade_Historica);
+    carregar_arquivos("files/gperfil/livros.txt", _Livro);
 }
 
 void DataImporter::adicionar_tema_a_map()
