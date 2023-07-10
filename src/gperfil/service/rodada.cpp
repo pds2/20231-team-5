@@ -6,7 +6,6 @@
 
 #include "../../../include/gperfil/service/rodada.h"
 
-
 Rodada::Rodada(int pontuacao_da_rodada) : aiService(" ")
 {
     _pontuacao_da_rodada = pontuacao_da_rodada;
@@ -44,12 +43,10 @@ std::string Rodada::fazer_pergunta(std::string pergunta, std::string tema, std::
 
     aiService.restartChat();
 
-    std::string x = "Olá, irei fazer um jogo o qual o usuario irá fazer uma pergunta sobre um elemento de um conjunto de " + tema_para_prompt + ",esse elemento é " + objeto_para_prompt +
-                    ", e vc irá responder sem citar o nome do " + objeto_para_prompt + " atenção em hipotese alguma vc pode citar o nome " + objeto_para_prompt;
+    std::string x = "Olá, irei fazer um jogo no qual o usuário irá fazer uma pergunta sobre um elemento de um conjunto de " + tema_para_prompt + ". Esse elemento é " + objeto_para_prompt +
+                    ". Você deve responder sem citar o nome do " + objeto_para_prompt + ". Atenção: em hipótese alguma você pode citar o nome " + objeto_para_prompt + ".";
     aiService.chat(x);
 
-    // std::string prompt = "olá, vamos jogar um jogo, eu irei digitar uma pergunta sobre: '" + objeto_para_prompt +
-    //                      "', e vc irá responder sem citar '" + objeto_para_prompt + "'.";
     std::string prompt = "A pergunta é: " + pergunta;
     std::string resposta = aiService.chat(prompt);
     return resposta;
@@ -141,17 +138,16 @@ bool Rodada::verificar_fim_rodada(std::string resposta, std::string objeto)
     {
         return true;
     }
-
     else if (get_pontuacao_da_rodada() <= 0)
     {
         return true;
     }
-
     else
     {
         return false;
     }
 }
+
 bool Rodada::verificar_pont_rod_neg_or_zero()
 {
     if (get_pontuacao_da_rodada() <= 0)

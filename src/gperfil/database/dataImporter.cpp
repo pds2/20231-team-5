@@ -4,10 +4,12 @@
 
 DataImporter::DataImporter()
 {
+    // Construtor padrão da classe DataImporter
 }
 
-void DataImporter::carregar_arquivos(const std::string &nomeArquivo, std::vector<std::string> &dados)
+void DataImporter::carregar_arquivos(const std::string& nomeArquivo, std::vector<std::string>& dados)
 {
+    // Carrega os dados de um arquivo e armazena em um vetor
     std::ifstream arquivo(nomeArquivo);
     std::string linha;
 
@@ -26,6 +28,7 @@ void DataImporter::carregar_arquivos(const std::string &nomeArquivo, std::vector
 
 void DataImporter::adicionar_arquivo_a_vetor()
 {
+    // Adiciona os arquivos de dados aos vetores correspondentes
     carregar_arquivos("files/gperfil/filmes.txt", _Filme);
     carregar_arquivos("files/gperfil/alimentos.txt", _Alimento);
     carregar_arquivos("files/gperfil/cidades.txt", _Cidade);
@@ -38,6 +41,7 @@ void DataImporter::adicionar_arquivo_a_vetor()
 
 void DataImporter::adicionar_tema_a_map()
 {
+    // Adiciona os temas e seus respectivos vetores de dados ao mapa de relacionamento
     _relacao["Filme"] = _Filme;
     _relacao["Alimento"] = _Alimento;
     _relacao["Cidade"] = _Cidade;
@@ -50,5 +54,6 @@ void DataImporter::adicionar_tema_a_map()
 
 std::vector<std::string> DataImporter::get_relacao(std::string tema)
 {
+    // Retorna os dados relacionados a um tema específico
     return _relacao[tema];
 }
