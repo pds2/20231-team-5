@@ -34,6 +34,7 @@ class GPTrivia : public Game{
 
   private:
     static const unsigned int numberOfRounds = 5;
+    static const unsigned int defaultScore = 10;
     unsigned int numRound;
 
     DataLoader dataLoader;

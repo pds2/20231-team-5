@@ -3,6 +3,7 @@
 #include <iostream>
 
 const unsigned int GPTrivia::numberOfRounds;
+const unsigned int GPTrivia::defaultScore;
 
 GPTrivia::GPTrivia() : dataLoader("files/gptrivia/triviacards.txt"), chatGPT(""), cardService(&chatGPT, dataLoader.getCardsMap()) {}
 
@@ -86,9 +87,9 @@ void GPTrivia::updateScore(const unsigned int userTime, ScoreboardService& score
   Player& currentPlayer = playerService.getCurrentPlayer();
   unsigned int score{0};
 
-  if (userTime <= 5) score = 10;
-  else if (userTime <= 10) score = 8;
-  else score = 6;
+  if (userTime <= 5) score = defaultScore;
+  else if (userTime <= 10) score = defaultScore - 2;
+  else score = defaultScore - 4;
 
   //if (ocorrer algum evento) ocorre o evento;
   // else {eu altero o placar manualmente}
