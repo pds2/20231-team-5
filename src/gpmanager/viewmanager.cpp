@@ -43,8 +43,10 @@ bool ViewManager::displayRules(){
   addToNextLine(content,"2 - No GPTrivia, você terá que responder perguntas de diferentes categorias. Teste seu conhecimento e veja quantas perguntas você consegue acertar!"); 
   addEmptyLines(content,1); 
   addToNextLine(content,"3 - No GPerfil, você terá que adivinhar a resposta correta com base em pistas fornecidas. Use seu raciocínio e dedução para descobrir a resposta correta!"); 
+  addEmptyLines(content,1); 
+  addToNextLine(content,"4 - Ambos os jogos permite de 2 a 4 jogadores. Reúna seus amigos e divirtam-se juntos!"); 
   addEmptyLines(content,2); 
-  addToNextLine(content,"VOLTAR ----------------------- V"); 
+  addToNextLine(content,"Voltar ----------------------- V"); 
 
   while(true){ 
     char userChoice = getUserChoice(content, "REGRAS"); // Obtém a escolha do usuário
