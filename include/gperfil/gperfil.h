@@ -26,11 +26,17 @@
 #include "../../include/gperfil/service/viewperfil.h"
 #include "../../include/common/game.h"
 
-const int PONT_RODADA = 10;
-const int QNT_RODADA = 2;
+// class GPerfil : public Game{
+  
+//   public: 
+//     GPerfil();
+//     void playGame() override;
+    
+//     // OUTROS METODOS
 
 class Gperfil : public Game
 {
+
 
 private:
     PlayerService playerService;
@@ -42,8 +48,6 @@ private:
     bool continuar = true;
 
 public:
-    
-
 
     Gperfil();
     /*Aqui começa o novo gperfil.cpp*/
@@ -53,6 +57,7 @@ public:
     void round(Rodada &currentRound, ScoreboardService &scoreboardService, std::string tema, std::string objeto);
     void updateScore(Rodada &x, Player &currentPlayer, ScoreboardService &scoreboardService, std::string respostaUsuario, bool respostaCorreta);
     string getHeader();
+
 };
 
 #endif

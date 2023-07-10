@@ -69,12 +69,6 @@ class View {
          */
         string getInput();
 
-        /**
-        * @brief Retorna o conteúdo customizável a ser exibido na tela.
-        * @return vector<string>
-        */
-        vector<string> getContent();
-
     protected:
         PlayerService* player_service;
 
@@ -100,23 +94,28 @@ class View {
         string display(string message);
         
     public:
-        // /**
-        //  * @brief Classe responsável por gerenciar a exibição de informações na tela e na recepção 
-        //  * e tratamento do input do usuário.
-        //  * @param player_service Serviço de jogador do qual as informações dos jogadores serão retiradas.
-        //  * @param header Cabeçalho customizável a ser exibido na tela, pode ser o nome do jogo.
-        //  * @throw InvalidArgumentException Caso o serviço de jogador seja nulo.
-        //  * @throw InvalidStateException Caso o número de linhas disponíveis seja menor que 0.
-        //  */
-        // View(PlayerService *player_service);
-
-        // DOCUMENTAR
+        /**
+        * @brief Construtor da classe View.
+        * @throw InvalidStateException Caso o número de linhas disponíveis seja menor que 0.
+        */
         View();
 
-        // DOCUMENTAR
+        /**
+        * @brief Destrutor virtual da classe View.
+        */
         virtual ~View();
 
-        // DOCUMENTAR
+        /**
+        * @brief Retorna o conteúdo customizável a ser exibido na tela.
+        * @return vector<string>
+        */
+        vector<string> getContent();
+
+        /**
+         * @brief Define o serviço de jogador a ser utilizado pelo view.
+         * @param player_service
+         * @throw InvalidArgumentException Caso o serviço de jogador seja nulo.
+         */
         void setPlayerService(PlayerService* player_service);
 
         /**

@@ -13,7 +13,7 @@ void GPTrivia::playGame(){
   // Apresenta o menu
   viewTrivia.displayMenu();
 
-  // Inicia o jogo
+  // Executa as rodadas
   runGameRounds();
 
   // Reinicia os dados do jogo
@@ -26,7 +26,7 @@ void GPTrivia::runGameRounds(){
   viewTrivia.setScoreboardService(&scoreboardService);
 
   // Executa todas as rodadas
-  for (unsigned int i = 0; i < numberOfRounds; i++) {
+  for (unsigned int i = 1; i <= numberOfRounds; i++) {
     numRound = i;
     round(scoreboardService);
   }

@@ -35,6 +35,9 @@ TEST_CASE("DataLoader - Teste de leitura de arquivo") {
     CHECK(historyCards.size() == 1);
     CHECK(historyCards[0].getQuestion() == "Qual foi o ano do descobrimento do Brasil? ");
     CHECK(historyCards[0].getAnswer() == "1500");
+
+    // exclui o arquivo temporário
+    std::remove("temp.txt");
 }
 
 TEST_CASE("DataLoader - Teste de exceção ao abrir arquivo") {
@@ -56,4 +59,7 @@ TEST_CASE("DataLoader - Teste de exceção ao extrair card sem resposta") {
 
     // Execução e Verificação
     CHECK_THROWS_AS(DataLoader("temp.txt"), AnswerNotFound);
+
+    // exclui o arquivo temporário
+    std::remove("temp.txt");
 } 

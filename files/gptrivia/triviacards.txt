@@ -15,15 +15,15 @@ Pergunta: Quem é considerado o pai da teoria da evolução? Resposta: Charles D
 Tema: Filmes
 
 Pergunta: Qual é o nome do protagonista da trilogia 'O Senhor dos Anéis'? Resposta: Frodo Baggins.
-Pergunta: Em que filme Leonardo DiCaprio interpreta um personagem chamado Cobb, especializado em extrair segredos do subconsciente? Resposta: A Origem (Inception).
+Pergunta: Em que filme Leonardo DiCaprio interpreta um personagem chamado Cobb, especializado em extrair segredos do subconsciente? Resposta: A Origem.
 Pergunta: Qual é o nome do vilão principal do filme 'O Cavaleiro das Trevas'? Resposta: Coringa.
 Pergunta: Qual é o nome da princesa da saga 'Star Wars' que é irmã de Luke Skywalker? Resposta: Leia Organa.
-Pergunta: Em que filme Tom Hanks interpreta um comandante de um navio mercante que é sequestrado por piratas somalianos? Resposta: Capitão Phillips (Captain Phillips).
+Pergunta: Em que filme Tom Hanks interpreta um comandante de um navio mercante que é sequestrado por piratas somalianos? Resposta: Capitão Phillips.
 Pergunta: Qual é o nome do personagem interpretado por Johnny Depp na franquia 'Piratas do Caribe'? Resposta: Jack Sparrow.
-Pergunta: Em que filme Robin Williams interpreta um terapeuta que usa métodos pouco convencionais para ajudar seus pacientes? Resposta: Gênio Indomável (Good Will Hunting).
+Pergunta: Em que filme Robin Williams interpreta um terapeuta que usa métodos pouco convencionais para ajudar seus pacientes? Resposta: Gênio Indomável.
 Pergunta: Qual é o nome do vilão principal da franquia 'Harry Potter' que tem o objetivo de matar o protagonista? Resposta: Lord Voldemort.
 Pergunta: Qual é o filme de maior bilheteria de todos os tempos? Resposta: Vingadores: Ultimato.
-Pergunta: Qual é o nome do personagem principal do filme "Clube da Luta" que é interpretado por Brad Pitt? Resposta: Tyler Durden
+Pergunta: Qual é o nome do personagem principal do filme "Clube da Luta" que é interpretado por Brad Pitt? Resposta: Tyler Durden.
 
 Tema: História mundial
 
@@ -37,3 +37,29 @@ Pergunta: Qual foi o período histórico caracterizado pelo declínio da economi
 Pergunta: Qual foi a cidade antiga que se destacou como um importante centro cultural na Grécia Antiga, lar de grandes filósofos como Sócrates, Platão e Aristóteles? Resposta: Atenas.
 Pergunta: Qual foi o tratado que encerrou a Primeira Guerra Mundial? Resposta: Tratado de Versalhes.
 Pergunta: Qual foi a civilização antiga que desenvolveu a escrita cuneiforme e construiu a Torre de Babel? Resposta: Civilização Mesopotâmica.
+
+Tema: Países
+
+Pergunta: Qual país é famoso por suas ruínas antigas, incluindo Machu Picchu? Resposta: Peru.
+Pergunta: Qual país é famoso por suas tradições de sumô e sushi? Resposta: Japão.
+Pergunta: Qual país é conhecido por ter uma das maiores biodiversidades do mundo? Resposta: Brasil.
+Pergunta: Qual é o país mais extenso do mundo em termos de área territorial? Resposta: Rússia.
+Pergunta: Qual país é conhecido como a "Terra dos Cangurus"? Resposta: Austrália.
+Pergunta: Qual país tem a maior população do mundo? Resposta: Índia.
+Pergunta: Qual país é famoso por seus canais e bicicletas como principal meio de transporte? Resposta: Holanda.
+Pergunta: Qual é o país mais populoso da União Europeia? Resposta: Alemanha.
+Pergunta: Qual país é famoso por suas pirâmides antigas e faraós? Resposta: Egito.
+Pergunta: Qual país é conhecido por sua rica história viking e pelos fiordes? Resposta: Noruega.
+
+Tema: Livros
+
+Pergunta: Qual livro é uma distopia clássica que retrata um futuro sombrio e controlado pelo governo totalitário? Resposta: 1984.
+Pergunta: Qual livro é considerado um dos maiores clássicos da literatura mundial e retrata a busca de um personagem por sentido e significado na vida? Resposta: O Pequeno Príncipe.
+Pergunta: Qual livro é uma das obras mais conhecidas de J.R.R. Tolkien, ambientado em um mundo de fantasia e repleto de elfos, anões e hobbits? Resposta: O Senhor dos Anéis.
+Pergunta: Qual livro é um clássico da literatura brasileira que retrata a realidade do sertão nordestino e a história de um retirante chamado Fabiano? Resposta: Vidas Secas.
+Pergunta: Qual livro é uma obra de não-ficção escrita por Stephen Hawking, que explora conceitos como o Big Bang, buracos negros e a natureza do tempo? Resposta: Uma Breve História do Tempo.
+Pergunta: Qual livro é uma distopia juvenil escrita por Suzanne Collins, ambientada em um futuro pós-apocalíptico onde jovens são obrigados a lutar até a morte em uma arena televisionada? Resposta: Jogos Vorazes.
+Pergunta: Qual livro é considerado uma das maiores obras da literatura russa, retratando a vida de várias famílias aristocráticas durante a invasão napoleônica? Resposta: Guerra e Paz.
+Pergunta: Qual livro é uma obra de Fyodor Dostoiévski, explorando temas como moralidade, crime e redenção através da história de um ex-estudante que comete um assassinato? Resposta: Crime e Castigo.
+Pergunta: Qual livro é uma distopia escrita por Aldous Huxley, que retrata uma sociedade futurista onde a liberdade individual é restringida em nome da estabilidade e do prazer? Resposta: Admirável Mundo Novo.
+Pergunta: Qual livro é uma obra de aventura e fantasia escrita por Jules Verne, que narra a jornada de um professor e seu sobrinho? Resposta: "Viagem ao Centro da Terra".
