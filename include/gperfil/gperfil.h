@@ -11,6 +11,8 @@ class GPerfil : public Game{
 
 };
 
+#endif
+
 // #ifndef GPERFIL_H
 // #define GPERFIL_H
 
