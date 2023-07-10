@@ -11,7 +11,7 @@ class Gperfil : public Game
 {
 
 const int PONT_RODADA = 22;
-const int QNT_RODADA = 0;
+const int QNT_RODADA = 1;
 
 private:
     PlayerService playerService;

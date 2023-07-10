@@ -19,7 +19,7 @@ void Gperfil::multiPlayer()
     ScoreboardService scoreboardService = ScoreboardService(playerService.getPlayers());
     _viewPerfil.setScoreboardService(&scoreboardService);
 
-    for (int i = 0; i < QNT_RODADA; i++)
+    for (int i = 1; i <= QNT_RODADA; i++)
     {
         numRound = i;
         Rodada currentRound(PONT_RODADA);
