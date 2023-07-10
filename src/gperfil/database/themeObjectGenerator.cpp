@@ -1,13 +1,14 @@
 #include "../../../include/gperfil/database/themeObjectGenerator.h"
-
 #include <random>
 
 ThemeObjectGenerator::ThemeObjectGenerator()
 {
+    // Construtor padrão da classe ThemeObjectGenerator
 }
 
 void ThemeObjectGenerator::definir_tema()
 {
+    // Define um tema aleatório para gerar o objeto
     std::vector<std::string> temas;
     temas = {"Filme", "Alimento", "Personalidade Historica", "Personalidade Atual", "Musica", "Livro", "Cidade", "Pais"};
     std::random_device rd;
@@ -19,6 +20,7 @@ void ThemeObjectGenerator::definir_tema()
 
 void ThemeObjectGenerator::sortear_objeto()
 {
+    // Sorteia um objeto aleatório com base no tema definido
     definir_tema();
     DataImporter carregar;
     carregar.adicionar_arquivo_a_vetor();
@@ -36,10 +38,12 @@ void ThemeObjectGenerator::sortear_objeto()
 
 std::string ThemeObjectGenerator::get_objeto()
 {
+    // Obtém o objeto sorteado
     return _objeto;
 }
 
 std::string ThemeObjectGenerator::get_tema()
 {
+    // Obtém o tema sorteado
     return _tema;
 }
