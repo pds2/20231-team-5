@@ -32,4 +32,3 @@ bool Player::isPlaying(){
 void Player::eliminate(){
     this->is_playing = false;
 }
-
