@@ -8,7 +8,7 @@
 CardService::CardService(AIService* chatGPT, map<string,vector<QuizCard>> cardsMap) : chatGPT(chatGPT), cardsMap(cardsMap) {}
 
 QuizCard CardService::generateCard(){
-  if(cardsMap.empty()) throw NoCardsAvailable(); // Lança exceção se o mapa de cartões estiver vazio
+  if (cardsMap.empty()) throw NoCardsAvailable(); // Lança exceção se o mapa de cartões estiver vazio
 
   // Obtém um tema e um índice aleatórios
   string randomTheme = getRandomTheme();
@@ -23,22 +23,22 @@ QuizCard CardService::generateCard(){
 
 bool CardService::evaluateAnswer(const QuizCard& quizCard, const string userAnswer){
   string chatPrompt = "Em nosso jogo de Quiz, a resposta '" + userAnswer + "' do jogador pode ser considerada correta, dado que a resposta correta para a pergunta é '" + quizCard.getAnswer() + "'? As respostas não precisam ser idênticas, apenas ter semelhanças (responda 1 se correta e 0 se incorreta).";
-  string chatAnswer = chatGPT->singlePrompt(chatPrompt);
+  string chatAnswer = chatGPT -> singlePrompt(chatPrompt);
 
   // Define as expressões regulares para verificar se a resposta obtida contém "1" ou "0".
   std::regex truePattern("1");
   std::regex falsePattern("0");
-  if(std::regex_search(chatAnswer, truePattern)) return true;
-  if(std::regex_search(chatAnswer, falsePattern)) return false;
+  if (std::regex_search(chatAnswer, truePattern)) return true;
+  if (std::regex_search(chatAnswer, falsePattern)) return false;
 }
 
 string CardService::getFeedback(const QuizCard& quizCard, const bool isCorrectAnswer){
   string feedback{};
 
-  if(isCorrectAnswer){
-    feedback = chatGPT->singlePrompt("O jogador do quiz acertou a resposta, dê um feedback positivo e engraçado para ele->");
-  }else{
-    feedback = chatGPT->singlePrompt("O jogador do quiz errou a resposta. Diga que ele errou, faça uma piada e apresente a seguinte resposta correta ao final: '" + quizCard.getAnswer() + "'. Não tente advinhar a resposta que ele deu!");
+  if (isCorrectAnswer){
+    feedback = chatGPT -> singlePrompt("O jogador do quiz acertou a resposta, dê um feedback positivo e engraçado para ele->");
+  } else {
+    feedback = chatGPT -> singlePrompt("O jogador do quiz errou a resposta. Diga que ele errou, faça uma piada e apresente a seguinte resposta correta ao final: '" + quizCard.getAnswer() + "'. Não tente advinhar a resposta que ele deu!");
   }
 
   return feedback;
@@ -55,7 +55,7 @@ string CardService::getRandomTheme() const{
   // Retorna um tema aleatório selecionado a partir do mapa de cartões
   auto it = std::begin(cardsMap);
   std::advance(it, dist(gen));
-  string randomTheme = it->first;
+  string randomTheme = it -> first;
 
   return randomTheme;
 }
@@ -79,7 +79,7 @@ void CardService::removeCardFromCardsMap(const string theme, const unsigned int 
   vector<QuizCard>& cardsTheme = cardsMap.at(theme);
   cardsTheme.erase(cardsTheme.begin() + index); // Remove o cartão do vetor usando o índice fornecido.
   
-  if(cardsTheme.size() == 0) removeThemeFromCardsMap(theme); // Verifica se o vetor de cartões ficou vazio após a remoção e remove o tema correspondente do mapa de cartões, se necessário.
+  if (cardsTheme.size() == 0) removeThemeFromCardsMap(theme); // Verifica se o vetor de cartões ficou vazio após a remoção e remove o tema correspondente do mapa de cartões, se necessário.
 } 
 
 void CardService::removeThemeFromCardsMap(const string theme){
