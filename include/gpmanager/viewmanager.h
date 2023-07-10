@@ -17,7 +17,7 @@ enum EnumChoice {
 };
 
 /**
- * @brief Classe responsável pela gestão da visualização dos jogos.
+ * @brief Classe responsável pela visualização que gerencia os jogos.
  */
 class ViewManager : public ViewGame{
   
@@ -32,7 +32,7 @@ class ViewManager : public ViewGame{
      * @return A escolha do jogo como um valor da enumeração EnumChoice.
      */
     EnumChoice displayStart();
-    
+
     bool displayRules() override;
 
 };
