@@ -1,41 +1,32 @@
-#include "../include/gptrivia/gptrivia.h"
+#include "../../include/gptrivia/gptrivia.h"
 
 #include <iostream>
 
 const unsigned int GPTrivia::numberOfRounds;
 
-GPTrivia::GPTrivia() : dataLoader(), chatGPT(""), cardService(&chatGPT, dataLoader.getCardsMap()), viewTrivia(&playerService) {}
+GPTrivia::GPTrivia() : dataLoader("files/gptrivia/triviacards.txt"), chatGPT(""), cardService(&chatGPT, dataLoader.getCardsMap()) {}
 
 void GPTrivia::playGame(){
-  try {
-    while (true) {
-      // Apresenta o menu e obtém o modo de jogo
-      GameType gameType = viewTrivia.displayMenu();
+  // Configura o serviço de jogador
+  viewTrivia.setPlayerService(&playerService);
 
-      // Inicia o jogo com base na escolha do jogador
-      if (gameType == SinglePlayer) singlePlayer();
-      if (gameType == MultiPlayer) multiPlayer();
+  // Apresenta o menu
+  viewTrivia.displayMenu();
 
-      // Reinicia os dados do jogo
-      resetData();
-    }
-  } catch (const ExitGame &e) {
-    //IMPLEMENTAR FECHAMENTO
-    cout<<"FIM DE JOGO"<<endl;
-  }
+  // Inicia o jogo
+  runGameRounds();
+
+  // Reinicia os dados do jogo
+  resetData();
 }
 
-void GPTrivia::singlePlayer(){
-  //IMPLEMENTAR SINGLEPLAYER
-}
-
-void GPTrivia::multiPlayer(){
+void GPTrivia::runGameRounds(){
   // Configura o placar do jogo
   ScoreboardService scoreboardService = ScoreboardService(playerService.getPlayers());
   viewTrivia.setScoreboardService(&scoreboardService);
 
   // Executa todas as rodadas
-  for (unsigned int i = 1; i <= numberOfRounds; i++) {
+  for (unsigned int i = 0; i < numberOfRounds; i++) {
     numRound = i;
     round(scoreboardService);
   }
@@ -88,26 +79,26 @@ void GPTrivia::playerTurn(ScoreboardService& scoreboardService, const string hea
   }
 
   // Altera a pontuação
-  updateScore(answerTime, scoreboardService, isCorrectAnswer);
+  updateScore(userTime, scoreboardService, isCorrectAnswer);
 }
 
-void GPTrivia::updateScore(const unsigned int answerTime, ScoreboardService& scoreboardService, const bool isCorrectAnswer){
+void GPTrivia::updateScore(const unsigned int userTime, ScoreboardService& scoreboardService, const bool isCorrectAnswer){
   Player& currentPlayer = playerService.getCurrentPlayer();
   unsigned int score{0};
 
-  if (isCorrectAnswer) {
-    if (answerTime <= 5) score = 10;
-    else if (answerTime <= 10) score = 8;
-    else score = 6;
-    //PROCESSAR EVENTO
-    scoreboardService.changeScore(currentPlayer.getId(), score);
-  }
+  if (userTime <= 5) score = 10;
+  else if (userTime <= 10) score = 8;
+  else score = 6;
+
+  //if (ocorrer algum evento) ocorre o evento;
+  // else {eu altero o placar manualmente}
+  if (isCorrectAnswer) scoreboardService.changeScore(currentPlayer.getId(), score);
 }
 
 void GPTrivia::resetData(){
   cardService = CardService(&chatGPT, dataLoader.getCardsMap());
   playerService = PlayerService();
-  viewTrivia = ViewTrivia(&playerService);
+  viewTrivia = ViewTrivia();
 }
 
 string GPTrivia::getHeader(){
