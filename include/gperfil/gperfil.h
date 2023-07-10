@@ -7,15 +7,11 @@
 #include "../../include/gperfil/service/viewperfil.h"
 #include "../../include/common/game.h"
 
-
-const int PONT_RODADA = 10;
-const int QNT_RODADA = 2;
-
 class Gperfil : public Game
 {
 
 const int PONT_RODADA = 22;
-const int QNT_RODADA = 2;
+const int QNT_RODADA = 0;
 
 private:
     PlayerService playerService;

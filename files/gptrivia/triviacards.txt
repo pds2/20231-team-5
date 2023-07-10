@@ -62,4 +62,4 @@ Pergunta: Qual livro é uma distopia juvenil escrita por Suzanne Collins, ambien
 Pergunta: Qual livro é considerado uma das maiores obras da literatura russa, retratando a vida de várias famílias aristocráticas durante a invasão napoleônica? Resposta: Guerra e Paz.
 Pergunta: Qual livro é uma obra de Fyodor Dostoiévski, explorando temas como moralidade, crime e redenção através da história de um ex-estudante que comete um assassinato? Resposta: Crime e Castigo.
 Pergunta: Qual livro é uma distopia escrita por Aldous Huxley, que retrata uma sociedade futurista onde a liberdade individual é restringida em nome da estabilidade e do prazer? Resposta: Admirável Mundo Novo.
-Pergunta: Qual livro é uma obra de aventura e fantasia escrita por Jules Verne, que narra a jornada de um professor e seu sobrinho? Resposta: "Viagem ao Centro da Terra".
+Pergunta: Qual livro é uma obra de aventura e fantasia escrita por Julio Verne, que narra a jornada de um professor e seu sobrinho? Resposta: Viagem ao Centro da Terra.
