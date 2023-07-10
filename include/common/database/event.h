@@ -24,7 +24,7 @@ class EventTypeMismatchException : public exception {
 /**
  * @brief Exceção lançada quando um argumento do evento é nulo.
 */
-class InvalidArgumentEventException : public exception {
+class InvalidArgumentException : public exception {
     public:
         const char* what() const throw() {
             return "Argumento do evento é nulo!";
@@ -48,6 +48,7 @@ class Event{
         EventType type;
         bool active;
 
+
         string name = "Evento Genérico";
         string description = "Evento genérico do jogo.";
     
@@ -59,7 +60,6 @@ class Event{
          * @param type Tipo do evento.
         */
         Event(EventType type);
-        virtual ~Event();
         
         /**
          * @brief Retorna o tipo do evento.
@@ -88,13 +88,13 @@ class Event{
          * @brief Retorna o nome do evento.
          * @return string nome do evento.
          */
-        string getName();
+        virtual string getName();
 
         /**
          * @brief Retorna a descrição do evento.
          * @return string descrição do evento.
          */
-        string getDescription();
+        virtual string getDescription();
 
         /**
          * @brief Retorna se o evento pode ser executado. A implementação padrão retorna 
@@ -116,9 +116,10 @@ class Event{
          * serviços de jogadores e placar são passados como argumento.
          * @param player_service serviço de gerenciamento de jogadores.
          * @param scoreboard_service serviço de gerenciamento do placar.
-         * @throws InvalidArgumentEventException se algum dos argumentos for nulo.
+         * @param score quantidade padrão de pontos do jogo.
+         * @throws InvalidArgumentException se algum dos argumentos for nulo.
          */
-        virtual void run(PlayerService* player_service, ScoreboardService* scoreboard_service) = 0;
+        virtual void run(unsigned int score, PlayerService* player_service, ScoreboardService* scoreboard_service) = 0;
 };
 
 #endif
