@@ -33,7 +33,7 @@ class GPTrivia : public Game{
     void playGame() override;
 
   private:
-    static const unsigned int numberOfRounds = 0;
+    static const unsigned int numberOfRounds = 1;
     unsigned int numRound;
 
     DataLoader dataLoader;

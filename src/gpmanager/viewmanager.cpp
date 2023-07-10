@@ -44,7 +44,7 @@ bool ViewManager::displayRules(){
   addEmptyLines(content,1); 
   addToNextLine(content,"3 - No GPerfil, você terá que adivinhar a resposta correta com base em pistas fornecidas. Use seu raciocínio e dedução para descobrir a resposta correta!"); 
   addEmptyLines(content,1); 
-  addToNextLine(content,"4 - Ambos os jogos permite de 2 a 4 jogadores. Reúna seus amigos e divirtam-se juntos!"); 
+  addToNextLine(content,"4 - Ambos os jogos permitem de 2 a 4 jogadores. Reúna seus amigos e divirtam-se juntos!"); 
   addEmptyLines(content,2); 
   addToNextLine(content,"Voltar ----------------------- V"); 
 
