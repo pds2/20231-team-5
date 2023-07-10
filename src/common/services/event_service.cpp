@@ -2,15 +2,13 @@
 
 EventService::EventService()
 {
-    this->events = events;
+    //this->events = events;
     
-    // ExtraPointsEvent* event1 = new ExtraPointsEvent();
-    // DeletePlayerEvent* event2= new DeletePlayerEvent();
+    ExtraPointsEvent* event1 = new ExtraPointsEvent();
+    DeletePlayerEvent* event2= new DeletePlayerEvent();
 
-    // addEvent(event1);
-    // addEvent(event2);
-
-    //events[0]->run(PlayerService *player_service, ScoreboardService *scoreboard_service);
+    addEvent(event1);
+    addEvent(event2);
 }
 
 EventService::~EventService(){
