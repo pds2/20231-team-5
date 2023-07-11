@@ -62,7 +62,7 @@ void Gperfil::processPlayerTurn(ScoreboardService &scoreboardService, const std:
 void Gperfil::updateScore(Rodada &x, Player &currentPlayer, ScoreboardService &scoreboardService, std::string respostaUsuario, bool respostaCorreta)
 {   
     EventService eventos =EventService();
-    if(eventos.getRunnableEvent()){
+    if(eventos.findRunnableEvent()){
         eventos.runCurrentEvent(10,&playerService,&scoreboardService);
     }
 
