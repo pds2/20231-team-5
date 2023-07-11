@@ -1,3 +1,7 @@
+# LINK DO GITHUB:
+https://github.com/pds2/20231-team-5
+
+
 # Instruções de reprodução
 Para executar o projeto é necessário uma chave de API da OpenAI válida, disponibilizamos uma em https://drive.google.com/drive/folders/1r2qy2myIZL1aHEETNuZuqR0C37_p9woy?usp=sharing. O arquivo "api_key.txt" deve ser baixado e colocado na pasta raiz do projeto (a mesma pasta em que o Makefile está localizado). O github não permite o upload desse arquivo e nem escrever a chave diretamente no código, logo tivemos que recorrer a esse setup manual.
 
