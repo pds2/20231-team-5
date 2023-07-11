@@ -77,6 +77,7 @@ void ViewPerfil::display_resp_correct(std::string respostaUsuario, std::string c
 
 bool ViewPerfil::displayRules()
 { 
+  // RESUMIR E RETIRAR ACENTOS
   std::vector<std::string> content = std::vector<std::string>(); // Cria um vetor vazio de strings para armazenar o conteúdo
 
   addToNextLine(content, "O jogo consiste em adivinhar um objeto sorteado, fazendo perguntas ao ChatGPT, com pontuaçao maior para menos perguntas feitas antes de acertar."); 
