@@ -42,7 +42,7 @@ bool ViewManager::displayRules(){
   addEmptyLines(content,1); 
   addToNextLine(content,"2 - No GPTrivia, voce tera que responder perguntas de diferentes categorias. Teste seu conhecimento e veja quantas perguntas voce consegue acertar!"); 
   addEmptyLines(content,1); 
-  addToNextLine(content,"3 - No GPerfil, voce tera que desvendar um objeto sorteado fazendo perguntas ao ChatGPT para obter pistas. Mas atencao: quanto menos perguntas fizer, maior sera a sua pontuação quando acertar! Desafie seus amigos neste emocionante desafio de adivinhação e prove que voce tem o que eh preciso para ser o grande vencedor!"); 
+  addToNextLine(content,"3 - No GPerfil, voce tera que desvendar um objeto sorteado fazendo perguntas ao ChatGPT para obter pistas. Mas atencao: quanto menos perguntas fizer, maior sera a sua pontuacao quando acertar! Prove que voce tem o que eh preciso para ser o grande vencedor!"); 
   addEmptyLines(content,1); 
   addToNextLine(content,"4 - Ambos os jogos permitem de 2 a 4 jogadores. Reuna seus amigos e divirtam-se juntos!"); 
   addEmptyLines(content,2); 
