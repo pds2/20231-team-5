@@ -9,10 +9,16 @@ EventService::EventService()
     //this->events = events;
 
     ExtraPointsEvent* event1 = new ExtraPointsEvent();
-    DeletePlayerEvent* event2 = new DeletePlayerEvent();
-
+    //DeletePlayerEvent* event2 = new DeletePlayerEvent();
+    std::cout<<"aqui foi"<<std::endl;
+    std::cin.get();
     addEvent(event1);
-    addEvent(event2);
+    std::cout<<"aqui foi 2"<<std::endl;
+    std::cin.get();
+    //addEvent(event2);
+    // std::cout<<"aqui foi 3"<<std::endl;
+    // std::cin.get();
+
 }
 
 EventService::~EventService(){
@@ -23,7 +29,11 @@ EventService::~EventService(){
 
 void EventService::addEvent(Event *event)
 {
+    std::cout<<"aqui foi 3"<<std::endl;
+    std::cin.get();
     this->events.push_back(event);
+    std::cout<<"aqui foi 4"<<std::endl;
+    std::cin.get();
 }
 
 
@@ -52,7 +62,6 @@ bool EventService::getRunnableEvent(){
     for(Event* event : this->events){
         if(event->canRun()){
             currentEvent = event;
-            std::cout << currentEvent->getName() << std::endl;
             return true;
         }
     }
@@ -61,7 +70,6 @@ bool EventService::getRunnableEvent(){
 }
 
 void EventService::runCurrentEvent(unsigned int score, PlayerService* player_service, ScoreboardService* scoreboard_service){
-    std::cout << currentEvent->getName() << std::endl;
     currentEvent->run(score, player_service, scoreboard_service);
 }
 

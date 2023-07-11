@@ -66,7 +66,7 @@ class EventService{
          * @param scoreboard_service Serviço de placar.
          * @throws EventDoesNotExistException se o evento não existir.
         */
-        void run(PlayerService* player_service, ScoreboardService* scoreboard_service);
+        //void run(PlayerService* player_service, ScoreboardService* scoreboard_service);
 
 
         /**

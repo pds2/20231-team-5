@@ -1,67 +1,57 @@
-#include "../../../include/common/services/event_service.h"
-#include "../../../include/common/services/extra_points_event.h"
-#include "../../../include/common/services/delete_player_event.h"
-
+#include "../../../include/common/database/event.h"
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 
-EventService::EventService()
-{
-    //this->events = events;
+using namespace std;
 
-    ExtraPointsEvent* event1 = new ExtraPointsEvent();
-    DeletePlayerEvent* event2 = new DeletePlayerEvent();
-
-    addEvent(event1);
-    addEvent(event2);
+Event::Event(EventType type){
+    this->type = type;
+    this->active = true;
 }
 
-EventService::~EventService(){
-    for (Event* event : this->events){
-        delete event;
-    }
+Event::~Event() {}
+
+
+EventType Event::getType(){
+    return this->type;
 }
 
-void EventService::addEvent(Event *event)
-{
-    this->events.push_back(event);
+bool Event::isActive(){
+    return this->active;
 }
 
-
-Event* EventService::getEvent(string event_name){
-    for (Event* event : this->events){
-        if (event->getName() == event_name){
-            return event;
-        }
-    }
-
-    throw EventDoesNotExistException();
+void Event::enable(){
+    this->active = true;
 }
 
-/*
-void EventService::run(PlayerService* player_service, ScoreboardService* scoreboard_service){
-    for (Event* event : this->events){
-        if (event->canRun()){
-            event->run(player_service, scoreboard_service);
-        }
+void Event::disable(){
+    this->active = false;
+}
+
+string Event::getName(){
+    return "Evento Genérico";
+}
+
+string Event::getDescription(){
+    return "Evento Genérico do Jogo";
+}
+
+bool Event::canRun(){
+    if (this->type != EventType::RANDOM){
+        throw EventTypeMismatchException();
     }
 
-
-
-*/
-bool EventService::getRunnableEvent(){
-    for(Event* event : this->events){
-        if(event->canRun()){
-            currentEvent = event;
-            std::cout << currentEvent->getName() << std::endl;
-            return true;
-        }
+    if (this->active == false){
+        return false;
     }
 
+    // Gera um numero aleatorio entre 0 e 9
+    std::srand(std::time(nullptr));
+    int random_number = std::rand() % 10; 
+    
+    if (random_number == 1){ // 10% de chance de acontecer
+        return true;
+    }
     return false;
 }
-
-void EventService::runCurrentEvent(unsigned int score, PlayerService* player_service, ScoreboardService* scoreboard_service){
-    std::cout << currentEvent->getName() << std::endl;
-    currentEvent->run(score, player_service, scoreboard_service);
-}
-

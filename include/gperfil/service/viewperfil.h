@@ -55,7 +55,6 @@ public:
    * @brief Exibe as regras do jogo.
    * @return `true` se o usuário escolher voltar.
    */
-  bool displayRules();
 };
 
 #endif
