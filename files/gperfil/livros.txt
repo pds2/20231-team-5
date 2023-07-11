@@ -1,24 +1,24 @@
 Dom Casmurro
-Grande Sertão: Veredas
-Memórias Póstumas de Brás Cubas
+Grande Sertao: Veredas
+Memorias Postumas de Bras Cubas
 Vidas Secas
 O Cortiço
 O Guarani
 Iracema
-Macunaíma
-Capitães da Areia
+Macunaima
+Capitaes da Areia
 A Hora da Estrela
 O Alienista
 A Escrava Isaura
 Triste Fim de Policarpo Quaresma
 Senhora
 O Auto da Compadecida
-São Bernardo
+Sao Bernardo
 Clara dos Anjos
 O Quinze
 O Ateneu
-Memórias de um Sargento de Milícias
-Angústia
+Memorias de um Sargento de Milicias
+Angustia
 A Cidade e as Serras
 Dom Casmurro
 O Seminarista
@@ -30,11 +30,11 @@ O Triste Fim de Policarpo Quaresma
 Incidente em Antares
 Dom Quixote
 Orgulho e Preconceito
-Cem Anos de Solidão
+Cem Anos de Solidao
 Moby Dick
 Crime e Castigo
 O Grande Gatsby
-A Odisséia
+A Odisseia
 O Morro dos Ventos Uivantes
 O Retrato de Dorian Gray
 Anna Karenina
@@ -47,12 +47,12 @@ Ulisses
 Hamlet
 Madame Bovary
 A Divina Comédia
-Os Miseráveis
+Os Miseraveis
 Guerra e Paz
-Admirável Mundo Novo
+Admiravel Mundo Novo
 A Metamorfose
 O Processo
-O Som e a Fúria
-Os Irmãos Karamazov
-Cândido, ou O Otimismo
+O Som e a Furia
+Os Irmaos Karamazov
+Candido ou O Otimismo
 As Mil e Uma Noites

@@ -1,4 +1,4 @@
-Cleópatra
+Cleopatra
 Leonardo da Vinci
 William Shakespeare
 Albert Einstein
@@ -7,7 +7,7 @@ Mahatma Gandhi
 Nelson Mandela
 Marie Curie
 Mozart
-Júlio César
+Julio Cesar
 Isaac Newton
 Alexandre
 Galileu Galilei
@@ -31,13 +31,11 @@ Che Guevara
 George Washington
 Martin Luther
 Muhammad Ali
-Simón Bolívar
 Thomas Jefferson
 Elvis Presley
 Jane Austen
-Elizabeth I
 Nikola Tesla
-Salvador Dalí
+Salvador Dali
 Michelangelo
 Albert Schweitzer
 Anne Frank

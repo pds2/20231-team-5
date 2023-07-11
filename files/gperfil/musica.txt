@@ -1,8 +1,8 @@
-Legião Urbana
+Legiao Urbana
 Marisa Monte
 Skank
 Anavitória
-Titãs
+Titas
 Chico Buarque
 Caetano Veloso
 Elis Regina
@@ -11,7 +11,7 @@ Gilberto Gil
 Milton Nascimento
 Djavan
 Ivete Sangalo
-Zé Ramalho
+Ze Ramalho
 Alceu Valença
 Cazuza
 Gal Costa
@@ -26,7 +26,7 @@ Los Hermanos
 Seu Jorge
 Vanessa da Mata
 Caetano Veloso
-Legião Urbana
+Legiao Urbana
 Anitta
 Projota
 Ivete Sangalo
@@ -38,7 +38,7 @@ Skank
 NX Zero
 Tim Maia
 Kid Abelha
-Maria Gadú
+Maria Gadu
 Lulu Santos
 Seu Jorge
 Rita Lee
@@ -47,11 +47,11 @@ Jota Quest
 Nando Reis
 Paula Fernandes
 Alceu Valença
-Sandy & Junior
+Sandy e Junior
 The Beatles
 Madonna
 Coldplay
-Beyoncé
+Beyonce
 Queen
 Michael Jackson
 ABBA
@@ -68,7 +68,7 @@ Bruno Mars
 Justin Timberlake
 Elton John
 Whitney Houston
-Guns N' Roses
+Guns N Roses
 Nirvana
 AC/DC
 Metallica
@@ -78,7 +78,7 @@ The Rolling Stones
 Elvis Presley
 David Bowie
 Prince
-Beyoncé
+Beyonce
 Adele
 Coldplay
 Justin Bieber
@@ -96,5 +96,4 @@ Michael Jackson
 Queen
 The Weeknd
 Pink Floyd
-Beyoncé
 Metallica

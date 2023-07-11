@@ -16,13 +16,13 @@ TEST_CASE("Carregar arquivos")
 
     SUBCASE("Verificar tamanho dos vetores")
     {
-        CHECK(dataImporter.get_relacao("Filme").size() == 86);
-        CHECK(dataImporter.get_relacao("Alimento").size() == 87);
-        CHECK(dataImporter.get_relacao("Cidade").size() == 70);
-        CHECK(dataImporter.get_relacao("Musica").size() == 100);
+        CHECK(dataImporter.get_relacao("Filme").size() == 84);
+        CHECK(dataImporter.get_relacao("Alimento").size() == 77);
+        CHECK(dataImporter.get_relacao("Cidade").size() == 59);
+        CHECK(dataImporter.get_relacao("Musica").size() == 99);
         CHECK(dataImporter.get_relacao("Pais").size() == 50);
-        CHECK(dataImporter.get_relacao("Personalidade Historica").size() == 46);
-        CHECK(dataImporter.get_relacao("Personalidade Atual").size() == 93);
+        CHECK(dataImporter.get_relacao("Personalidade Historica").size() == 44);
+        CHECK(dataImporter.get_relacao("Personalidade Atual").size() == 92);
         CHECK(dataImporter.get_relacao("Livro").size() == 58);
     }
 }

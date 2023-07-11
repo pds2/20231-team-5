@@ -1,4 +1,3 @@
-Tóquio
 Nova York
 Londres
 Paris
@@ -15,7 +14,6 @@ Berlim
 Barcelona
 Vancouver
 Dubai
-Amsterdã
 Bangkok
 Cidade do Cabo
 Singapura
@@ -23,7 +21,6 @@ Los Angeles
 Lisboa
 Atenas
 Havana
-Reykjavík
 Nairobi
 Seul
 Madri
@@ -40,17 +37,13 @@ Santiago
 Florença
 Marrakech
 Viena
-Brasília
 Melbourne
-Wellington
 Edimburgo
 Atenas
 Copenhague
 Mumbai
-Vitória da Conquista
-São Paulo
+Vitoria da Conquista
 Rio de Janeiro
-Brasília
 Salvador
 Fortaleza
 Belo Horizonte
@@ -58,13 +51,9 @@ Manaus
 Curitiba
 Recife
 Porto Alegre
-Goiânia
-Belém
 Campinas
-São Luís
-Maceió
 Teresina
 Natal
 Campo Grande
-João Pessoa
+Joao Pessoa
 Florianópolis

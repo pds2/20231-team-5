@@ -14,7 +14,6 @@ Abóbora
 Batata
 Cenoura
 Tomate
-Brócolis
 Couve-flor
 Espinafre
 Alface
@@ -22,24 +21,17 @@ Cebola
 Pimentão
 Pepino
 Milho
-Feijão
 Lentilha
-Grão de bico
 Ervilha
 Arroz
 Trigo
 Aveia
 Quinoa
-Amêndoa
 Noz
-Castanha-do-pará
 Castanha de caju
 Amendoim
-Avelã
 Pistache
-Salmão
 Atum
-Camarão
 Frango
 Carne bovina
 Porco
@@ -53,7 +45,6 @@ Azeite de oliva
 Vinagre
 Sal
 Mel
-Geléia
 Massa
 Sopa
 Lasanha
@@ -67,13 +58,12 @@ Tortas
 Panquecas
 Cookies
 Batata frita
-Hambúrguer
 Nuggets
 Batata-doce
 Tofu
 Seitan
 Tempeh
-Leite de amêndoa
+Leite de amendoa
 Leite de soja
 Leite de coco
 Iogurte de coco
