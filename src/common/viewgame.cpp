@@ -11,7 +11,7 @@ void ViewGame::displayMenu(){
   vector<string> content{}; // Cria um vetor vazio de strings para armazenar o conteúdo
 
   addEmptyLines(content, 1);
-  addToNextLine(content, "Bem vindo ao " + gameName + ". Digite a opção desejada!");
+  addToNextLine(content, "Bem vindo ao " + gameName + ". Digite a opcao desejada!");
   addEmptyLines(content, 6);
   addToNextLine(content, "Iniciar ---------------------- I");
   addEmptyLines(content, 1);
@@ -104,7 +104,7 @@ void ViewGame::buildRanking(ScoreboardService& scoreboardService, vector<string>
     oss << std::setw(3) << std::setfill(' ') << playerScore;
     std::string stringScore = oss.str();
 
-    string stringPlayer = std::to_string(i) + ". Pontuação: " + stringScore;
+    string stringPlayer = std::to_string(i) + ". Pontuacao: " + stringScore;
     for(int i = 0; i <= 10; i++) stringPlayer += ' ';
     stringPlayer += playerName;
     i++;
@@ -183,7 +183,7 @@ vector<string> ViewGame::getUsernamesList(vector<string>& content, int numPlayer
 
         break;
       } catch (const InvalidNameException& e) {
-        username = getUserAnswer(content, gameName, "Username inválido. Digite novamente: "); // Continua solicitando um username válido.
+        username = getUserAnswer(content, gameName, "Username invalido. Digite novamente: "); // Continua solicitando um username válido.
       }
     }
 
@@ -200,7 +200,7 @@ unsigned int ViewGame::getNumberOfPlayers(){
   vector<string> content{};
 
   addEmptyLines(content, 1);
-  addToNextLine(content, "Digite o número de jogadores (máximo 4): ");
+  addToNextLine(content, "Digite o numero de jogadores (maximo 4): ");
 
   unsigned int numPlayers{0};
   string numString = getUserAnswer(content, gameName, "Sua resposta: "); // Obtém a entrada do usuário
@@ -210,7 +210,7 @@ unsigned int ViewGame::getNumberOfPlayers(){
       if(!(numPlayers > 1 && numPlayers <= 4)) throw InvalidNumber(); // Lança uma exceção se o número estiver fora do intervalo válido
       break;
     } catch (const std::exception &e) {
-      numString = getUserAnswer(content, gameName, "Número inválido. Digite novamente: "); // Continua solicitando um número válido caso ocorra alguma exceção
+      numString = getUserAnswer(content, gameName, "Numero invalido. Digite novamente: "); // Continua solicitando um número válido caso ocorra alguma exceção
     }
   }
 
