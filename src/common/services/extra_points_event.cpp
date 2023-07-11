@@ -32,7 +32,7 @@ void ExtraPointsEvent::run(unsigned int score, PlayerService* player_service, Sc
 {
     Player& player = player_service->getCurrentPlayer();  ///< Obtém o jogador atual.
 
-    int new_score = score * 2;  ///< Calcula o novo placar.
+    int new_score = score * 2;  ///< Calcula o novo score.
 
     scoreboard_service->changeScore(player.getId(), new_score);  ///< Atualiza o placar do jogador.
 }
