@@ -87,13 +87,20 @@ void GPTrivia::updateScore(const unsigned int userTime, ScoreboardService& score
   Player& currentPlayer = playerService.getCurrentPlayer();
   unsigned int score{0};
 
-  if (userTime <= 5) score = defaultScore;
-  else if (userTime <= 10) score = defaultScore - 2;
-  else score = defaultScore - 4;
+  // Configura a quantidade de pontos com base no tempo de resposta
+  if (isCorrectAnswer) {
+    if (userTime <= 5) score = defaultScore;
+    else if (userTime <= 10) score = defaultScore - 2;
+    else score = defaultScore - 4;
+  }
 
-  //if (ocorrer algum evento) ocorre o evento;
-  // else {eu altero o placar manualmente}
-  if (isCorrectAnswer) scoreboardService.changeScore(currentPlayer.getId(), score);
+  // Verifica se algum evento irá ocorrer e o executa, caso necessário
+  if (eventService.findRunnableEvent()) {
+    eventService.runCurrentEvent(score, &playerService, &scoreboardService);
+  }
+  else {
+    scoreboardService.changeScore(currentPlayer.getId(), score);
+  }
 }
 
 void GPTrivia::resetData(){

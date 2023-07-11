@@ -30,18 +30,12 @@ bool DeletePlayerEvent::canRun()
         }
 
         std::srand(std::time(nullptr));
+        int random_number = std::rand() % 100;  // Gera um número entre 0 e 99
 
-        int numCount = 100;
-
-	for (int i = 0; i < numCount; ++i)
-	{
-    		int random_number = std::rand() % 100;  // Gera um número entre 0 e 99
-
-    		if (random_number == 0)  // 1% de chance (0 representa 1 em 100)
-                {
-                        return true;
-                }
-	}
+        if (random_number == 0)  // 1% de chance (0 representa 1 em 100)
+        {
+                return true;
+        }
 
         return false;
 }
@@ -56,7 +50,7 @@ void DeletePlayerEvent::run(unsigned int score, PlayerService* player_service, S
 {
 	Player& currentPlayer = player_service->getCurrentPlayer();
         
-        player_service->removePlayer(currentPlayer.getId());
+        if(player_service->getPlayers().size() >= 3) player_service->removePlayer(currentPlayer.getId());
 }
 
 

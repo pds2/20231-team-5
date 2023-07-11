@@ -48,8 +48,6 @@ class Event{
         EventType type;
         bool active;
 
-
-    
     public:
 
         virtual ~Event();

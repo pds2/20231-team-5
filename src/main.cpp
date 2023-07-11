@@ -6,10 +6,3 @@ int main(){
     
     return 0;
 }
-
-// #include "../include/gperfil/gperfil.h"
-
-// int main(){
-//     Gperfil a = Gperfil();
-//     a.playGame();
-// }

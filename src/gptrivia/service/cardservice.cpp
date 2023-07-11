@@ -22,8 +22,6 @@ QuizCard CardService::generateCard(){
 }
 
 bool CardService::evaluateAnswer(const QuizCard& quizCard, const string userAnswer){
-  // string chatPrompt = "Em nosso jogo de Quiz, a resposta '" + userAnswer + "' do jogador pode ser considerada correta, dado que a resposta correta para a pergunta é '" + quizCard.getAnswer() + "'? As respostas não precisam ser idênticas, apenas ter semelhanças (responda 1 se correta e 0 se incorreta).";
-  
   string chatPrompt = "Em nosso jogo de Quiz, a resposta '" + userAnswer + "' do jogador pode ser considerada correta, dado que a resposta correta para a pergunta é '" + quizCard.getAnswer() + "'? (responda 1 se correta e 0 se incorreta).";
   string chatAnswer = chatGPT -> singlePrompt(chatPrompt);
 

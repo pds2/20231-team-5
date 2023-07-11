@@ -87,7 +87,7 @@ class EventService{
          *
          * @return true se um evento executável foi encontrado, false caso contrário.
         */
-        bool getRunnableEvent();
+        bool findRunnableEvent();
 };
 
 #endif

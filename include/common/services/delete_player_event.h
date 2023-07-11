@@ -11,9 +11,6 @@
  */
 class DeletePlayerEvent : public Event
 {
-	private:
-		string name; /**< Nome específico do evento DeletePlayerEvent */
-        string description; /**< Descrição específica do evento DeletePlayerEvent */
 	public:
 		/**
 		 * @brief Construtor da classe DeletePlayerEvent.

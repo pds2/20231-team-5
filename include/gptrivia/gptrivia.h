@@ -42,7 +42,7 @@ class GPTrivia : public Game{
     CardService cardService;
     PlayerService playerService;
     ViewTrivia viewTrivia;
-    //EventService eventService;
+    EventService eventService;
 
     /**
      * @brief Executa as rodadas do jogo.

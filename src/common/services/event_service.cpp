@@ -4,21 +4,12 @@
 
 #include <iostream>
 
-EventService::EventService()
+EventService::EventService() : currentEvent(nullptr)
 {
-    //this->events = events;
-
     ExtraPointsEvent* event1 = new ExtraPointsEvent();
-    //DeletePlayerEvent* event2 = new DeletePlayerEvent();
-    std::cout<<"aqui foi"<<std::endl;
-    std::cin.get();
+    DeletePlayerEvent* event2 = new DeletePlayerEvent();
     addEvent(event1);
-    std::cout<<"aqui foi 2"<<std::endl;
-    std::cin.get();
-    //addEvent(event2);
-    // std::cout<<"aqui foi 3"<<std::endl;
-    // std::cin.get();
-
+    addEvent(event2);
 }
 
 EventService::~EventService(){
@@ -29,13 +20,8 @@ EventService::~EventService(){
 
 void EventService::addEvent(Event *event)
 {
-    std::cout<<"aqui foi 3"<<std::endl;
-    std::cin.get();
     this->events.push_back(event);
-    std::cout<<"aqui foi 4"<<std::endl;
-    std::cin.get();
 }
-
 
 Event* EventService::getEvent(string event_name){
     for (Event* event : this->events){
@@ -47,18 +33,7 @@ Event* EventService::getEvent(string event_name){
     throw EventDoesNotExistException();
 }
 
-/*
-void EventService::run(PlayerService* player_service, ScoreboardService* scoreboard_service){
-    for (Event* event : this->events){
-        if (event->canRun()){
-            event->run(player_service, scoreboard_service);
-        }
-    }
-
-
-
-*/
-bool EventService::getRunnableEvent(){
+bool EventService::findRunnableEvent(){
     for(Event* event : this->events){
         if(event->canRun()){
             currentEvent = event;
