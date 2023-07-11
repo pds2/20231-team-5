@@ -1,17 +1,15 @@
-Cidadão Kane
-O Poderoso Chefão
 Um Sonho de Liberdade
 A Lista de Schindler
 O Senhor dos Anéis
 Pulp Fiction
 Cantando na Chuva
 Casablanca
-Lawrence da Arábia
-O Silêncio dos Inocentes
+Lawrence da Arabia
+O Silencio dos Inocentes
 E o Vento Levou
 2001: Uma Odisseia no Espaço
 A Noviça Rebelde
-Laranja Mecânica
+Laranja Mecanica
 O Grande Gatsby
 Star Wars
 De Volta para o Futuro
@@ -21,31 +19,31 @@ Os Sete Samurais
 A Felicidade Não se Compra
 Clube da Luta
 Apocalypse Now
-Cães de Aluguel
+Caes de Aluguel
 Cidade de Deus
 O Labirinto do Fauno
-O Rei Leão
+O Rei Leao
 A Origem
 Cisne Negro
 Matrix
 O Resgate do Soldado Ryan
 O Iluminado
-Tubarão
+Tubarao
 Interestelar
 A Vida é Bela
 Scarface
-O Senhor dos Anéis: A Sociedade do Anel
+O Senhor dos Aneis: A Sociedade do Anel
 Cidade dos Sonhos
 A Viagem de Chihiro
-O Fabuloso Destino de Amélie Poulain
-Ponte para Terabítia
-A Paixão de Cristo
+O Fabuloso Destino de Amelie Poulain
+Ponte para Terabitia
+A Paixao de Cristo
 A Bela e a Fera
 Forrest Gump: O Contador de Histórias
 O Exorcista
 O Artista
 Gladiador
-Bastardos Inglórios
+Bastardos Inglorios
 Drive
 Cidade de Deus
 Cavalo de Guerra
@@ -58,7 +56,7 @@ A Teoria de Tudo
 Taxi Driver
 Os Infiltrados
 O Lobo de Wall Street
-Mad Max: Estrada da Fúria
+Mad Max: Estrada da Furia
 Onde os Fracos Não Têm Vez
 A Chegada
 Blade Runner 2049
@@ -74,13 +72,13 @@ Coringa
 Batman
 Homem-Aranha
 Homem de Ferro
-O Rei Leão
-A Origem dos Guardiões
+O Rei Leao
+A Origem dos Guardioes
 O Regresso
 Parasita
 La La Land
 Whiplash
 Os Suspeitos
-Três Homens em Conflito
+Tres Homens em Conflito
 Indiana Jones: Os Caçadores da Arca Perdida
 Toy Story

@@ -21,6 +21,7 @@ private:
     int numRound{0};
     bool continuar = true;
 
+
 public:
     /**
      * @brief Construtor padrão da classe Gperfil.
@@ -31,6 +32,7 @@ public:
      * @brief Função para iniciar o jogo GPerfil.
      */
     void playGame() override;
+    void resetData();
 
     /**
      * @brief Processa a vez de um jogador.

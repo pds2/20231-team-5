@@ -80,13 +80,13 @@ bool ViewPerfil::displayRules()
   // RESUMIR E RETIRAR ACENTOS
   std::vector<std::string> content = std::vector<std::string>(); // Cria um vetor vazio de strings para armazenar o conteúdo
 
-  addToNextLine(content, "Objetivo: O objetivo do jogo é adivinhar o objeto sorteado fazendo perguntas ao ChatGPT. Quanto menos perguntas forem feitas, maior será a pontuação do jogador em caso de acerto."); 
+  addToNextLine(content, "O jogo consiste em adivinhar um objeto sorteado, fazendo perguntas ao ChatGPT, com pontuaçao maior para menos perguntas feitas antes de acertar."); 
   addEmptyLines(content, 1); 
-  addToNextLine(content, "Tema: Antes de começar o jogo, um tema será sorteado e informado aos jogadores. Esse tema servirá como uma pista geral sobre o tipo de objeto que foi sorteado, fornecendo um contexto para as perguntas."); 
+  addToNextLine(content, "Antes do jogo, um tema eh sorteado para fornecer contexto sobre o tipo de objeto sorteado e auxiliar nas perguntas dos jogadores."); 
   addEmptyLines(content, 1); 
-  addToNextLine(content, "Perguntas: Os jogadores podem fazer perguntas ao ChatGPT para obter pistas e tentar adivinhar o objeto sorteado. As perguntas devem ser feitas de forma que a resposta seja um sim ou não, para ajudar a eliminar possibilidades e direcionar a busca. Os jogadores podem fazer perguntas alternadamente ou em rodadas definidas.");
+  addToNextLine(content, "Os jogadores fazem perguntas ao ChatGPT em formato sim ou nao para obter pistas e adivinhar o objeto sorteado. ");
   addEmptyLines(content, 1); 
-  addToNextLine(content, "Pontuação: A pontuação será calculada com base no número de perguntas feitas para adivinhar o objeto correto. Quanto menos perguntas forem necessárias para acertar, maior será a pontuação obtida pelo jogador.");
+  addToNextLine(content, "A pontuaçao depende do numero de perguntas feitas para acertar o objeto, sendo maior para menos perguntas realizadas.");
   addEmptyLines(content, 2); 
   addToNextLine(content, "Voltar ----------------------- V"); 
 

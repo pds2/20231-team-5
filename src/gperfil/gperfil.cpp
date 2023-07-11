@@ -9,10 +9,12 @@ Gperfil::Gperfil()
 }
 
 void Gperfil::playGame()
-{
+{   
+    resetData();
     _viewPerfil.setPlayerService(&playerService);
     _viewPerfil.displayMenu();
     multiPlayer();
+    resetData();
 }
 
 void Gperfil::multiPlayer()
@@ -60,9 +62,9 @@ void Gperfil::processPlayerTurn(ScoreboardService &scoreboardService, const std:
 void Gperfil::updateScore(Rodada &x, Player &currentPlayer, ScoreboardService &scoreboardService, std::string respostaUsuario, bool respostaCorreta)
 {   
     EventService eventos =EventService();
-    // if(eventos.getRunnableEvent()){
-    //     eventos.runCurrentEvent(10,&playerService,&scoreboardService);
-    // }
+    if(eventos.getRunnableEvent()){
+        eventos.runCurrentEvent(10,&playerService,&scoreboardService);
+    }
 
     if (respostaCorreta)
     {
@@ -93,4 +95,9 @@ std::string Gperfil::getHeader()
     std::string header = "GPerfil - RODADA " + numString;
 
     return header;
+}
+
+void Gperfil::resetData(){
+  playerService = PlayerService();
+  _viewPerfil = ViewPerfil();
 }

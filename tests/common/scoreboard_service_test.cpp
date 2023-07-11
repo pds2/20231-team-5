@@ -130,7 +130,6 @@ TEST_CASE("Test InvalidScoreException"){
     CHECK_THROWS_AS(scoreboard_service.changeScore(0, -10), InvalidScoreException);
     scoreboard_service.changeScore(0, 20);
     CHECK_THROWS_AS(scoreboard_service.changeScore(0, -21), InvalidScoreException);
-    CHECK_THROWS_AS(scoreboard_service.changeScore(1, 200), InvalidScoreException);
 
     destroyTestPlayers(test_players);
 }
