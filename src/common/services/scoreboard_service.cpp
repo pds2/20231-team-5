@@ -19,7 +19,7 @@ void ScoreboardService::changeScore(unsigned int player_id, unsigned int delta_s
     }
 
     double new_score = scoreboard[player_id] + delta_score;
-    if (new_score < 0 || new_score > 100) {
+    if (new_score < 0 || new_score > 1000) {
         throw InvalidScoreException();
     }
 

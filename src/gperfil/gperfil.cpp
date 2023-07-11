@@ -1,6 +1,7 @@
 #include "../../include/gperfil/gperfil.h"
 #include "../../include/gperfil/database/themeObjectGenerator.h"
 #include "../../include/gperfil/service/viewperfil.h"
+#include"../../include/common/services/event_service.h"
 
 Gperfil::Gperfil()
 {
@@ -57,7 +58,12 @@ void Gperfil::processPlayerTurn(ScoreboardService &scoreboardService, const std:
 }
 
 void Gperfil::updateScore(Rodada &x, Player &currentPlayer, ScoreboardService &scoreboardService, std::string respostaUsuario, bool respostaCorreta)
-{
+{   
+    EventService eventos =EventService();
+    // if(eventos.getRunnableEvent()){
+    //     eventos.runCurrentEvent(10,&playerService,&scoreboardService);
+    // }
+
     if (respostaCorreta)
     {
         unsigned int currentPlayerId = currentPlayer.getId();

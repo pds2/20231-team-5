@@ -30,11 +30,11 @@ void Event::disable(){
 }
 
 string Event::getName(){
-    return this->name;
+    return "Evento Genérico";
 }
 
 string Event::getDescription(){
-    return this->description;
+    return "Evento Genérico do Jogo";
 }
 
 bool Event::canRun(){
