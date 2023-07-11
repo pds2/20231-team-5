@@ -3,7 +3,7 @@
 ViewManager::ViewManager() : ViewGame("GPjogos") {}
 
 EnumChoice ViewManager::displayStart() {
-  vector<string> content{};
+  vector<string> content{}; // Cria um vetor vazio de strings para armazenar o conteúdo
 
   addEmptyLines(content, 1);
   addToNextLine(content, "Selecione o jogo que deseja se aventurar!");
@@ -23,17 +23,34 @@ EnumChoice ViewManager::displayStart() {
     switch (userChoice)
     {
     case 'g':
-      return Trivia;
+      return Trivia; // Retorna a escolha do jogo "GPTrivia"
     case 'p':
-      return Perfil;
+      return Perfil; // Retorna a escolha do jogo "GPerfil"
     case 'r':
-      loopAgain = displayRules();
+      loopAgain = displayRules(); // Exibe as regras 
+      break;
     case 'x':
-      throw ExitGame();
+      throw ExitGame(); // Lança uma exceção para sair do jogo
     }
   }
 }
 
-bool ViewManager::displayRules() {
-  
+bool ViewManager::displayRules(){ 
+  vector<string> content=vector<string>(); // Cria um vetor vazio de strings para armazenar o conteúdo
+
+  addToNextLine(content,"1 - Bem-vindo ao GPjogos! Você pode escolher entre dois jogos emocionantes para se desafiar com seus amigos: GPTrivia e GPerfil."); 
+  addEmptyLines(content,1); 
+  addToNextLine(content,"2 - No GPTrivia, você terá que responder perguntas de diferentes categorias. Teste seu conhecimento e veja quantas perguntas você consegue acertar!"); 
+  addEmptyLines(content,1); 
+  addToNextLine(content,"3 - No GPerfil, você terá que adivinhar a resposta correta com base em pistas fornecidas. Use seu raciocínio e dedução para descobrir a resposta correta!"); 
+  addEmptyLines(content,1); 
+  addToNextLine(content,"4 - Ambos os jogos permitem de 2 a 4 jogadores. Reúna seus amigos e divirtam-se juntos!"); 
+  addEmptyLines(content,2); 
+  addToNextLine(content,"Voltar ----------------------- V"); 
+
+  while(true){ 
+    char userChoice = getUserChoice(content, "REGRAS"); // Obtém a escolha do usuário
+
+    if(userChoice=='v') return true; // Retorna true se o usuário escolher voltar
+  }
 }
