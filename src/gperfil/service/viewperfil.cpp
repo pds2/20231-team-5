@@ -80,13 +80,13 @@ bool ViewPerfil::displayRules()
   // RESUMIR E RETIRAR ACENTOS
   std::vector<std::string> content = std::vector<std::string>(); // Cria um vetor vazio de strings para armazenar o conteúdo
 
-  addToNextLine(content, "O jogo consiste em adivinhar um objeto sorteado, fazendo perguntas ao ChatGPT, com pontuaçao maior para menos perguntas feitas antes de acertar."); 
+  addToNextLine(content, "1 - O jogo consiste em adivinhar um objeto sorteado, fazendo perguntas ao ChatGPT, com pontuaçao maior para menos perguntas feitas antes de acertar."); 
   addEmptyLines(content, 1); 
-  addToNextLine(content, "Antes do jogo, um tema eh sorteado para fornecer contexto sobre o tipo de objeto sorteado e auxiliar nas perguntas dos jogadores."); 
+  addToNextLine(content, "2 - Antes do jogo, um tema eh sorteado para fornecer contexto sobre o tipo de objeto sorteado e auxiliar nas perguntas dos jogadores."); 
   addEmptyLines(content, 1); 
-  addToNextLine(content, "Os jogadores fazem perguntas ao ChatGPT em formato sim ou nao para obter pistas e adivinhar o objeto sorteado. ");
+  addToNextLine(content, "3 - Os jogadores fazem perguntas ao ChatGPT em formato sim ou nao para obter pistas e adivinhar o objeto sorteado. ");
   addEmptyLines(content, 1); 
-  addToNextLine(content, "A pontuaçao depende do numero de perguntas feitas para acertar o objeto, sendo maior para menos perguntas realizadas.");
+  addToNextLine(content, "4 - A pontuaçao depende do numero de perguntas feitas para acertar o objeto, sendo maior para menos perguntas realizadas.");
   addEmptyLines(content, 2); 
   addToNextLine(content, "Voltar ----------------------- V"); 
 
